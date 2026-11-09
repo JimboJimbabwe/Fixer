@@ -1,0 +1,1809 @@
+{
+  "Geometric & Symbols": [
+    {
+      "char": "⌬",
+      "codepoint": "U+232C",
+      "decimal": 9004,
+      "unicode_escape": "\\u232c",
+      "name": "BENZENE RING"
+    },
+    {
+      "char": "⍟",
+      "codepoint": "U+235F",
+      "decimal": 9055,
+      "unicode_escape": "\\u235f",
+      "name": "APL FUNCTIONAL SYMBOL CIRCLE STAR"
+    },
+    {
+      "char": "⎊",
+      "codepoint": "U+238A",
+      "decimal": 9098,
+      "unicode_escape": "\\u238a",
+      "name": "CIRCLED TRIANGLE DOWN"
+    },
+    {
+      "char": "⎈",
+      "codepoint": "U+2388",
+      "decimal": 9096,
+      "unicode_escape": "\\u2388",
+      "name": "HELM SYMBOL"
+    },
+    {
+      "char": "⌘",
+      "codepoint": "U+2318",
+      "decimal": 8984,
+      "unicode_escape": "\\u2318",
+      "name": "PLACE OF INTEREST SIGN"
+    },
+    {
+      "char": "⍜",
+      "codepoint": "U+235C",
+      "decimal": 9052,
+      "unicode_escape": "\\u235c",
+      "name": "APL FUNCTIONAL SYMBOL CIRCLE UNDERBAR"
+    },
+    {
+      "char": "⍝",
+      "codepoint": "U+235D",
+      "decimal": 9053,
+      "unicode_escape": "\\u235d",
+      "name": "APL FUNCTIONAL SYMBOL UP SHOE JOT"
+    },
+    {
+      "char": "⎔",
+      "codepoint": "U+2394",
+      "decimal": 9108,
+      "unicode_escape": "\\u2394",
+      "name": "SOFTWARE-FUNCTION SYMBOL"
+    },
+    {
+      "char": "⌁",
+      "codepoint": "U+2301",
+      "decimal": 8961,
+      "unicode_escape": "\\u2301",
+      "name": "ELECTRIC ARROW"
+    },
+    {
+      "char": "⌭",
+      "codepoint": "U+232D",
+      "decimal": 9005,
+      "unicode_escape": "\\u232d",
+      "name": "CYLINDRICITY"
+    },
+    {
+      "char": "⍰",
+      "codepoint": "U+2370",
+      "decimal": 9072,
+      "unicode_escape": "\\u2370",
+      "name": "APL FUNCTIONAL SYMBOL QUAD QUESTION"
+    },
+    {
+      "char": "⎎",
+      "codepoint": "U+238E",
+      "decimal": 9102,
+      "unicode_escape": "\\u238e",
+      "name": "HYSTERESIS SYMBOL"
+    },
+    {
+      "char": "⌿",
+      "codepoint": "U+233F",
+      "decimal": 9023,
+      "unicode_escape": "\\u233f",
+      "name": "APL FUNCTIONAL SYMBOL SLASH BAR"
+    },
+    {
+      "char": "⍃",
+      "codepoint": "U+2343",
+      "decimal": 9027,
+      "unicode_escape": "\\u2343",
+      "name": "APL FUNCTIONAL SYMBOL QUAD LESS-THAN"
+    },
+    {
+      "char": "⍄",
+      "codepoint": "U+2344",
+      "decimal": 9028,
+      "unicode_escape": "\\u2344",
+      "name": "APL FUNCTIONAL SYMBOL QUAD GREATER-THAN"
+    }
+  ],
+  "Arrows & Pointers": [
+    {
+      "char": "⇜",
+      "codepoint": "U+21DC",
+      "decimal": 8668,
+      "unicode_escape": "\\u21dc",
+      "name": "LEFTWARDS SQUIGGLE ARROW"
+    },
+    {
+      "char": "⇝",
+      "codepoint": "U+21DD",
+      "decimal": 8669,
+      "unicode_escape": "\\u21dd",
+      "name": "RIGHTWARDS SQUIGGLE ARROW"
+    },
+    {
+      "char": "↯",
+      "codepoint": "U+21AF",
+      "decimal": 8623,
+      "unicode_escape": "\\u21af",
+      "name": "DOWNWARDS ZIGZAG ARROW"
+    },
+    {
+      "char": "⇰",
+      "codepoint": "U+21F0",
+      "decimal": 8688,
+      "unicode_escape": "\\u21f0",
+      "name": "RIGHTWARDS WHITE ARROW FROM WALL"
+    },
+    {
+      "char": "⬳",
+      "codepoint": "U+2B33",
+      "decimal": 11059,
+      "unicode_escape": "\\u2b33",
+      "name": "LONG LEFTWARDS SQUIGGLE ARROW"
+    },
+    {
+      "char": "⟿",
+      "codepoint": "U+27FF",
+      "decimal": 10239,
+      "unicode_escape": "\\u27ff",
+      "name": "LONG RIGHTWARDS SQUIGGLE ARROW"
+    },
+    {
+      "char": "↺",
+      "codepoint": "U+21BA",
+      "decimal": 8634,
+      "unicode_escape": "\\u21ba",
+      "name": "ANTICLOCKWISE OPEN CIRCLE ARROW"
+    },
+    {
+      "char": "↻",
+      "codepoint": "U+21BB",
+      "decimal": 8635,
+      "unicode_escape": "\\u21bb",
+      "name": "CLOCKWISE OPEN CIRCLE ARROW"
+    },
+    {
+      "char": "⟳",
+      "codepoint": "U+27F3",
+      "decimal": 10227,
+      "unicode_escape": "\\u27f3",
+      "name": "CLOCKWISE GAPPED CIRCLE ARROW"
+    },
+    {
+      "char": "⤡",
+      "codepoint": "U+2921",
+      "decimal": 10529,
+      "unicode_escape": "\\u2921",
+      "name": "NORTH WEST AND SOUTH EAST ARROW"
+    },
+    {
+      "char": "⤢",
+      "codepoint": "U+2922",
+      "decimal": 10530,
+      "unicode_escape": "\\u2922",
+      "name": "NORTH EAST AND SOUTH WEST ARROW"
+    },
+    {
+      "char": "⇶",
+      "codepoint": "U+21F6",
+      "decimal": 8694,
+      "unicode_escape": "\\u21f6",
+      "name": "THREE RIGHTWARDS ARROWS"
+    },
+    {
+      "char": "⬰",
+      "codepoint": "U+2B30",
+      "decimal": 11056,
+      "unicode_escape": "\\u2b30",
+      "name": "LEFT ARROW WITH SMALL CIRCLE"
+    },
+    {
+      "char": "⟵",
+      "codepoint": "U+27F5",
+      "decimal": 10229,
+      "unicode_escape": "\\u27f5",
+      "name": "LONG LEFTWARDS ARROW"
+    },
+    {
+      "char": "⤔",
+      "codepoint": "U+2914",
+      "decimal": 10516,
+      "unicode_escape": "\\u2914",
+      "name": "RIGHTWARDS ARROW WITH TAIL WITH VERTICAL STROKE"
+    }
+  ],
+  "Box Drawing & Blocks": [
+    {
+      "char": "╬",
+      "codepoint": "U+256C",
+      "decimal": 9580,
+      "unicode_escape": "\\u256c",
+      "name": "BOX DRAWINGS DOUBLE VERTICAL AND HORIZONTAL"
+    },
+    {
+      "char": "╠",
+      "codepoint": "U+2560",
+      "decimal": 9568,
+      "unicode_escape": "\\u2560",
+      "name": "BOX DRAWINGS DOUBLE VERTICAL AND RIGHT"
+    },
+    {
+      "char": "╦",
+      "codepoint": "U+2566",
+      "decimal": 9574,
+      "unicode_escape": "\\u2566",
+      "name": "BOX DRAWINGS DOUBLE DOWN AND HORIZONTAL"
+    },
+    {
+      "char": "░",
+      "codepoint": "U+2591",
+      "decimal": 9617,
+      "unicode_escape": "\\u2591",
+      "name": "LIGHT SHADE"
+    },
+    {
+      "char": "▒",
+      "codepoint": "U+2592",
+      "decimal": 9618,
+      "unicode_escape": "\\u2592",
+      "name": "MEDIUM SHADE"
+    },
+    {
+      "char": "▓",
+      "codepoint": "U+2593",
+      "decimal": 9619,
+      "unicode_escape": "\\u2593",
+      "name": "DARK SHADE"
+    },
+    {
+      "char": "▞",
+      "codepoint": "U+259E",
+      "decimal": 9630,
+      "unicode_escape": "\\u259e",
+      "name": "QUADRANT UPPER RIGHT AND LOWER LEFT"
+    },
+    {
+      "char": "▚",
+      "codepoint": "U+259A",
+      "decimal": 9626,
+      "unicode_escape": "\\u259a",
+      "name": "QUADRANT UPPER LEFT AND LOWER RIGHT"
+    },
+    {
+      "char": "▛",
+      "codepoint": "U+259B",
+      "decimal": 9627,
+      "unicode_escape": "\\u259b",
+      "name": "QUADRANT UPPER LEFT AND UPPER RIGHT AND LOWER LEFT"
+    },
+    {
+      "char": "▟",
+      "codepoint": "U+259F",
+      "decimal": 9631,
+      "unicode_escape": "\\u259f",
+      "name": "QUADRANT UPPER RIGHT AND LOWER LEFT AND LOWER RIGHT"
+    },
+    {
+      "char": "▙",
+      "codepoint": "U+2599",
+      "decimal": 9625,
+      "unicode_escape": "\\u2599",
+      "name": "QUADRANT UPPER LEFT AND LOWER LEFT AND LOWER RIGHT"
+    },
+    {
+      "char": "▜",
+      "codepoint": "U+259C",
+      "decimal": 9628,
+      "unicode_escape": "\\u259c",
+      "name": "QUADRANT UPPER LEFT AND UPPER RIGHT AND LOWER RIGHT"
+    },
+    {
+      "char": "▐",
+      "codepoint": "U+2590",
+      "decimal": 9616,
+      "unicode_escape": "\\u2590",
+      "name": "RIGHT HALF BLOCK"
+    },
+    {
+      "char": "▌",
+      "codepoint": "U+258C",
+      "decimal": 9612,
+      "unicode_escape": "\\u258c",
+      "name": "LEFT HALF BLOCK"
+    },
+    {
+      "char": "▄",
+      "codepoint": "U+2584",
+      "decimal": 9604,
+      "unicode_escape": "\\u2584",
+      "name": "LOWER HALF BLOCK"
+    }
+  ],
+  "Alchemical / Ancient": [
+    {
+      "char": "🜁",
+      "codepoint": "U+1F701",
+      "decimal": 128769,
+      "unicode_escape": "\\U0001f701",
+      "name": "ALCHEMICAL SYMBOL FOR AIR"
+    },
+    {
+      "char": "🜂",
+      "codepoint": "U+1F702",
+      "decimal": 128770,
+      "unicode_escape": "\\U0001f702",
+      "name": "ALCHEMICAL SYMBOL FOR FIRE"
+    },
+    {
+      "char": "🜃",
+      "codepoint": "U+1F703",
+      "decimal": 128771,
+      "unicode_escape": "\\U0001f703",
+      "name": "ALCHEMICAL SYMBOL FOR EARTH"
+    },
+    {
+      "char": "🜄",
+      "codepoint": "U+1F704",
+      "decimal": 128772,
+      "unicode_escape": "\\U0001f704",
+      "name": "ALCHEMICAL SYMBOL FOR WATER"
+    },
+    {
+      "char": "🜔",
+      "codepoint": "U+1F714",
+      "decimal": 128788,
+      "unicode_escape": "\\U0001f714",
+      "name": "ALCHEMICAL SYMBOL FOR SALT"
+    },
+    {
+      "char": "🜕",
+      "codepoint": "U+1F715",
+      "decimal": 128789,
+      "unicode_escape": "\\U0001f715",
+      "name": "ALCHEMICAL SYMBOL FOR NITRE"
+    },
+    {
+      "char": "🜖",
+      "codepoint": "U+1F716",
+      "decimal": 128790,
+      "unicode_escape": "\\U0001f716",
+      "name": "ALCHEMICAL SYMBOL FOR VITRIOL"
+    },
+    {
+      "char": "🜗",
+      "codepoint": "U+1F717",
+      "decimal": 128791,
+      "unicode_escape": "\\U0001f717",
+      "name": "ALCHEMICAL SYMBOL FOR VITRIOL-2"
+    },
+    {
+      "char": "🜚",
+      "codepoint": "U+1F71A",
+      "decimal": 128794,
+      "unicode_escape": "\\U0001f71a",
+      "name": "ALCHEMICAL SYMBOL FOR GOLD"
+    },
+    {
+      "char": "🝆",
+      "codepoint": "U+1F746",
+      "decimal": 128838,
+      "unicode_escape": "\\U0001f746",
+      "name": "ALCHEMICAL SYMBOL FOR OIL"
+    },
+    {
+      "char": "🝇",
+      "codepoint": "U+1F747",
+      "decimal": 128839,
+      "unicode_escape": "\\U0001f747",
+      "name": "ALCHEMICAL SYMBOL FOR SPIRIT"
+    },
+    {
+      "char": "🝉",
+      "codepoint": "U+1F749",
+      "decimal": 128841,
+      "unicode_escape": "\\U0001f749",
+      "name": "ALCHEMICAL SYMBOL FOR GUM"
+    },
+    {
+      "char": "🝐",
+      "codepoint": "U+1F750",
+      "decimal": 128848,
+      "unicode_escape": "\\U0001f750",
+      "name": "ALCHEMICAL SYMBOL FOR CADUCEUS"
+    },
+    {
+      "char": "🝑",
+      "codepoint": "U+1F751",
+      "decimal": 128849,
+      "unicode_escape": "\\U0001f751",
+      "name": "ALCHEMICAL SYMBOL FOR TRIDENT"
+    }
+  ],
+  "Astronomy / Astrology": [
+    {
+      "char": "☿",
+      "codepoint": "U+263F",
+      "decimal": 9791,
+      "unicode_escape": "\\u263f",
+      "name": "MERCURY"
+    },
+    {
+      "char": "♀",
+      "codepoint": "U+2640",
+      "decimal": 9792,
+      "unicode_escape": "\\u2640",
+      "name": "FEMALE SIGN"
+    },
+    {
+      "char": "♂",
+      "codepoint": "U+2642",
+      "decimal": 9794,
+      "unicode_escape": "\\u2642",
+      "name": "MALE SIGN"
+    },
+    {
+      "char": "♃",
+      "codepoint": "U+2643",
+      "decimal": 9795,
+      "unicode_escape": "\\u2643",
+      "name": "JUPITER"
+    },
+    {
+      "char": "♄",
+      "codepoint": "U+2644",
+      "decimal": 9796,
+      "unicode_escape": "\\u2644",
+      "name": "SATURN"
+    },
+    {
+      "char": "⛢",
+      "codepoint": "U+26E2",
+      "decimal": 9954,
+      "unicode_escape": "\\u26e2",
+      "name": "ASTRONOMICAL SYMBOL FOR URANUS"
+    },
+    {
+      "char": "♅",
+      "codepoint": "U+2645",
+      "decimal": 9797,
+      "unicode_escape": "\\u2645",
+      "name": "URANUS"
+    },
+    {
+      "char": "♆",
+      "codepoint": "U+2646",
+      "decimal": 9798,
+      "unicode_escape": "\\u2646",
+      "name": "NEPTUNE"
+    },
+    {
+      "char": "⚷",
+      "codepoint": "U+26B7",
+      "decimal": 9911,
+      "unicode_escape": "\\u26b7",
+      "name": "CHIRON"
+    },
+    {
+      "char": "⚸",
+      "codepoint": "U+26B8",
+      "decimal": 9912,
+      "unicode_escape": "\\u26b8",
+      "name": "BLACK MOON LILITH"
+    },
+    {
+      "char": "⚹",
+      "codepoint": "U+26B9",
+      "decimal": 9913,
+      "unicode_escape": "\\u26b9",
+      "name": "SEXTILE"
+    },
+    {
+      "char": "⚺",
+      "codepoint": "U+26BA",
+      "decimal": 9914,
+      "unicode_escape": "\\u26ba",
+      "name": "SEMISEXTILE"
+    },
+    {
+      "char": "⚻",
+      "codepoint": "U+26BB",
+      "decimal": 9915,
+      "unicode_escape": "\\u26bb",
+      "name": "QUINCUNX"
+    },
+    {
+      "char": "⚼",
+      "codepoint": "U+26BC",
+      "decimal": 9916,
+      "unicode_escape": "\\u26bc",
+      "name": "SESQUIQUADRATE"
+    },
+    {
+      "char": "⯓",
+      "codepoint": "U+2BD3",
+      "decimal": 11219,
+      "unicode_escape": "\\u2bd3",
+      "name": "PLUTO FORM TWO"
+    },
+    {
+      "char": "⯔",
+      "codepoint": "U+2BD4",
+      "decimal": 11220,
+      "unicode_escape": "\\u2bd4",
+      "name": "PLUTO FORM THREE"
+    }
+  ],
+  "Braille Patterns": [
+    {
+      "char": "⠿",
+      "codepoint": "U+283F",
+      "decimal": 10303,
+      "unicode_escape": "\\u283f",
+      "name": "BRAILLE PATTERN DOTS-123456"
+    },
+    {
+      "char": "⡿",
+      "codepoint": "U+287F",
+      "decimal": 10367,
+      "unicode_escape": "\\u287f",
+      "name": "BRAILLE PATTERN DOTS-1234567"
+    },
+    {
+      "char": "⢿",
+      "codepoint": "U+28BF",
+      "decimal": 10431,
+      "unicode_escape": "\\u28bf",
+      "name": "BRAILLE PATTERN DOTS-1234568"
+    },
+    {
+      "char": "⣿",
+      "codepoint": "U+28FF",
+      "decimal": 10495,
+      "unicode_escape": "\\u28ff",
+      "name": "BRAILLE PATTERN DOTS-12345678"
+    },
+    {
+      "char": "⠭",
+      "codepoint": "U+282D",
+      "decimal": 10285,
+      "unicode_escape": "\\u282d",
+      "name": "BRAILLE PATTERN DOTS-1346"
+    },
+    {
+      "char": "⠺",
+      "codepoint": "U+283A",
+      "decimal": 10298,
+      "unicode_escape": "\\u283a",
+      "name": "BRAILLE PATTERN DOTS-2456"
+    },
+    {
+      "char": "⡴",
+      "codepoint": "U+2874",
+      "decimal": 10356,
+      "unicode_escape": "\\u2874",
+      "name": "BRAILLE PATTERN DOTS-3567"
+    },
+    {
+      "char": "⢎",
+      "codepoint": "U+288E",
+      "decimal": 10382,
+      "unicode_escape": "\\u288e",
+      "name": "BRAILLE PATTERN DOTS-2348"
+    },
+    {
+      "char": "⣡",
+      "codepoint": "U+28E1",
+      "decimal": 10465,
+      "unicode_escape": "\\u28e1",
+      "name": "BRAILLE PATTERN DOTS-1678"
+    },
+    {
+      "char": "⠱",
+      "codepoint": "U+2831",
+      "decimal": 10289,
+      "unicode_escape": "\\u2831",
+      "name": "BRAILLE PATTERN DOTS-156"
+    }
+  ],
+  "Phonetic / Linguistic": [
+    {
+      "char": "ʘ",
+      "codepoint": "U+0298",
+      "decimal": 664,
+      "unicode_escape": "\\u0298",
+      "name": "LATIN LETTER BILABIAL CLICK"
+    },
+    {
+      "char": "ǀ",
+      "codepoint": "U+01C0",
+      "decimal": 448,
+      "unicode_escape": "\\u01c0",
+      "name": "LATIN LETTER DENTAL CLICK"
+    },
+    {
+      "char": "ǁ",
+      "codepoint": "U+01C1",
+      "decimal": 449,
+      "unicode_escape": "\\u01c1",
+      "name": "LATIN LETTER LATERAL CLICK"
+    },
+    {
+      "char": "ǂ",
+      "codepoint": "U+01C2",
+      "decimal": 450,
+      "unicode_escape": "\\u01c2",
+      "name": "LATIN LETTER ALVEOLAR CLICK"
+    },
+    {
+      "char": "ʇ",
+      "codepoint": "U+0287",
+      "decimal": 647,
+      "unicode_escape": "\\u0287",
+      "name": "LATIN SMALL LETTER TURNED T"
+    },
+    {
+      "char": "ʍ",
+      "codepoint": "U+028D",
+      "decimal": 653,
+      "unicode_escape": "\\u028d",
+      "name": "LATIN SMALL LETTER TURNED W"
+    },
+    {
+      "char": "ʎ",
+      "codepoint": "U+028E",
+      "decimal": 654,
+      "unicode_escape": "\\u028e",
+      "name": "LATIN SMALL LETTER TURNED Y"
+    },
+    {
+      "char": "ʕ",
+      "codepoint": "U+0295",
+      "decimal": 661,
+      "unicode_escape": "\\u0295",
+      "name": "LATIN LETTER PHARYNGEAL VOICED FRICATIVE"
+    },
+    {
+      "char": "ʢ",
+      "codepoint": "U+02A2",
+      "decimal": 674,
+      "unicode_escape": "\\u02a2",
+      "name": "LATIN LETTER REVERSED GLOTTAL STOP WITH STROKE"
+    },
+    {
+      "char": "ʡ",
+      "codepoint": "U+02A1",
+      "decimal": 673,
+      "unicode_escape": "\\u02a1",
+      "name": "LATIN LETTER GLOTTAL STOP WITH STROKE"
+    },
+    {
+      "char": "ɮ",
+      "codepoint": "U+026E",
+      "decimal": 622,
+      "unicode_escape": "\\u026e",
+      "name": "LATIN SMALL LETTER LEZH"
+    },
+    {
+      "char": "ɸ",
+      "codepoint": "U+0278",
+      "decimal": 632,
+      "unicode_escape": "\\u0278",
+      "name": "LATIN SMALL LETTER PHI"
+    },
+    {
+      "char": "ɻ",
+      "codepoint": "U+027B",
+      "decimal": 635,
+      "unicode_escape": "\\u027b",
+      "name": "LATIN SMALL LETTER TURNED R WITH HOOK"
+    },
+    {
+      "char": "ʈ",
+      "codepoint": "U+0288",
+      "decimal": 648,
+      "unicode_escape": "\\u0288",
+      "name": "LATIN SMALL LETTER T WITH RETROFLEX HOOK"
+    },
+    {
+      "char": "ɖ",
+      "codepoint": "U+0256",
+      "decimal": 598,
+      "unicode_escape": "\\u0256",
+      "name": "LATIN SMALL LETTER D WITH TAIL"
+    }
+  ],
+  "Miscellaneous Oddities": [
+    {
+      "char": "⁂",
+      "codepoint": "U+2042",
+      "decimal": 8258,
+      "unicode_escape": "\\u2042",
+      "name": "ASTERISM"
+    },
+    {
+      "char": "※",
+      "codepoint": "U+203B",
+      "decimal": 8251,
+      "unicode_escape": "\\u203b",
+      "name": "REFERENCE MARK"
+    },
+    {
+      "char": "☞",
+      "codepoint": "U+261E",
+      "decimal": 9758,
+      "unicode_escape": "\\u261e",
+      "name": "WHITE RIGHT POINTING INDEX"
+    },
+    {
+      "char": "☜",
+      "codepoint": "U+261C",
+      "decimal": 9756,
+      "unicode_escape": "\\u261c",
+      "name": "WHITE LEFT POINTING INDEX"
+    },
+    {
+      "char": "⸮",
+      "codepoint": "U+2E2E",
+      "decimal": 11822,
+      "unicode_escape": "\\u2e2e",
+      "name": "REVERSED QUESTION MARK"
+    },
+    {
+      "char": "⁀",
+      "codepoint": "U+2040",
+      "decimal": 8256,
+      "unicode_escape": "\\u2040",
+      "name": "CHARACTER TIE"
+    },
+    {
+      "char": "⁔",
+      "codepoint": "U+2054",
+      "decimal": 8276,
+      "unicode_escape": "\\u2054",
+      "name": "INVERTED UNDERTIE"
+    },
+    {
+      "char": "⁕",
+      "codepoint": "U+2055",
+      "decimal": 8277,
+      "unicode_escape": "\\u2055",
+      "name": "FLOWER PUNCTUATION MARK"
+    },
+    {
+      "char": "‽",
+      "codepoint": "U+203D",
+      "decimal": 8253,
+      "unicode_escape": "\\u203d",
+      "name": "INTERROBANG"
+    },
+    {
+      "char": "⸻",
+      "codepoint": "U+2E3B",
+      "decimal": 11835,
+      "unicode_escape": "\\u2e3b",
+      "name": "THREE-EM DASH"
+    },
+    {
+      "char": "⟅",
+      "codepoint": "U+27C5",
+      "decimal": 10181,
+      "unicode_escape": "\\u27c5",
+      "name": "LEFT S-SHAPED BAG DELIMITER"
+    },
+    {
+      "char": "⟆",
+      "codepoint": "U+27C6",
+      "decimal": 10182,
+      "unicode_escape": "\\u27c6",
+      "name": "RIGHT S-SHAPED BAG DELIMITER"
+    },
+    {
+      "char": "⌥",
+      "codepoint": "U+2325",
+      "decimal": 8997,
+      "unicode_escape": "\\u2325",
+      "name": "OPTION KEY"
+    },
+    {
+      "char": "⏣",
+      "codepoint": "U+23E3",
+      "decimal": 9187,
+      "unicode_escape": "\\u23e3",
+      "name": "BENZENE RING WITH CIRCLE"
+    },
+    {
+      "char": "⌬",
+      "codepoint": "U+232C",
+      "decimal": 9004,
+      "unicode_escape": "\\u232c",
+      "name": "BENZENE RING"
+    }
+  ],
+  "Mathematical / Operators": [
+    {
+      "char": "⊛",
+      "codepoint": "U+229B",
+      "decimal": 8859,
+      "unicode_escape": "\\u229b",
+      "name": "CIRCLED ASTERISK OPERATOR"
+    },
+    {
+      "char": "⊜",
+      "codepoint": "U+229C",
+      "decimal": 8860,
+      "unicode_escape": "\\u229c",
+      "name": "CIRCLED EQUALS"
+    },
+    {
+      "char": "⊝",
+      "codepoint": "U+229D",
+      "decimal": 8861,
+      "unicode_escape": "\\u229d",
+      "name": "CIRCLED DASH"
+    },
+    {
+      "char": "⋒",
+      "codepoint": "U+22D2",
+      "decimal": 8914,
+      "unicode_escape": "\\u22d2",
+      "name": "DOUBLE INTERSECTION"
+    },
+    {
+      "char": "⋓",
+      "codepoint": "U+22D3",
+      "decimal": 8915,
+      "unicode_escape": "\\u22d3",
+      "name": "DOUBLE UNION"
+    },
+    {
+      "char": "⋔",
+      "codepoint": "U+22D4",
+      "decimal": 8916,
+      "unicode_escape": "\\u22d4",
+      "name": "PITCHFORK"
+    },
+    {
+      "char": "⟐",
+      "codepoint": "U+27D0",
+      "decimal": 10192,
+      "unicode_escape": "\\u27d0",
+      "name": "WHITE DIAMOND WITH CENTRED DOT"
+    },
+    {
+      "char": "⟑",
+      "codepoint": "U+27D1",
+      "decimal": 10193,
+      "unicode_escape": "\\u27d1",
+      "name": "AND WITH DOT"
+    },
+    {
+      "char": "⟒",
+      "codepoint": "U+27D2",
+      "decimal": 10194,
+      "unicode_escape": "\\u27d2",
+      "name": "ELEMENT OF OPENING UPWARDS"
+    },
+    {
+      "char": "⦶",
+      "codepoint": "U+29B6",
+      "decimal": 10678,
+      "unicode_escape": "\\u29b6",
+      "name": "CIRCLED VERTICAL BAR"
+    },
+    {
+      "char": "⦷",
+      "codepoint": "U+29B7",
+      "decimal": 10679,
+      "unicode_escape": "\\u29b7",
+      "name": "CIRCLED PARALLEL"
+    },
+    {
+      "char": "⦸",
+      "codepoint": "U+29B8",
+      "decimal": 10680,
+      "unicode_escape": "\\u29b8",
+      "name": "CIRCLED REVERSE SOLIDUS"
+    },
+    {
+      "char": "⧖",
+      "codepoint": "U+29D6",
+      "decimal": 10710,
+      "unicode_escape": "\\u29d6",
+      "name": "WHITE HOURGLASS"
+    },
+    {
+      "char": "⧗",
+      "codepoint": "U+29D7",
+      "decimal": 10711,
+      "unicode_escape": "\\u29d7",
+      "name": "BLACK HOURGLASS"
+    },
+    {
+      "char": "⧢",
+      "codepoint": "U+29E2",
+      "decimal": 10722,
+      "unicode_escape": "\\u29e2",
+      "name": "SHUFFLE PRODUCT"
+    }
+  ],
+  "Dingbats": [
+    {
+      "char": "✇",
+      "codepoint": "U+2707",
+      "decimal": 9991,
+      "unicode_escape": "\\u2707",
+      "name": "TAPE DRIVE"
+    },
+    {
+      "char": "✈",
+      "codepoint": "U+2708",
+      "decimal": 9992,
+      "unicode_escape": "\\u2708",
+      "name": "AIRPLANE"
+    },
+    {
+      "char": "✉",
+      "codepoint": "U+2709",
+      "decimal": 9993,
+      "unicode_escape": "\\u2709",
+      "name": "ENVELOPE"
+    },
+    {
+      "char": "✍",
+      "codepoint": "U+270D",
+      "decimal": 9997,
+      "unicode_escape": "\\u270d",
+      "name": "WRITING HAND"
+    },
+    {
+      "char": "✎",
+      "codepoint": "U+270E",
+      "decimal": 9998,
+      "unicode_escape": "\\u270e",
+      "name": "LOWER RIGHT PENCIL"
+    },
+    {
+      "char": "✏",
+      "codepoint": "U+270F",
+      "decimal": 9999,
+      "unicode_escape": "\\u270f",
+      "name": "PENCIL"
+    },
+    {
+      "char": "✐",
+      "codepoint": "U+2710",
+      "decimal": 10000,
+      "unicode_escape": "\\u2710",
+      "name": "UPPER RIGHT PENCIL"
+    },
+    {
+      "char": "✑",
+      "codepoint": "U+2711",
+      "decimal": 10001,
+      "unicode_escape": "\\u2711",
+      "name": "WHITE NIB"
+    },
+    {
+      "char": "✒",
+      "codepoint": "U+2712",
+      "decimal": 10002,
+      "unicode_escape": "\\u2712",
+      "name": "BLACK NIB"
+    },
+    {
+      "char": "❧",
+      "codepoint": "U+2767",
+      "decimal": 10087,
+      "unicode_escape": "\\u2767",
+      "name": "ROTATED FLORAL HEART BULLET"
+    },
+    {
+      "char": "❦",
+      "codepoint": "U+2766",
+      "decimal": 10086,
+      "unicode_escape": "\\u2766",
+      "name": "FLORAL HEART"
+    },
+    {
+      "char": "✿",
+      "codepoint": "U+273F",
+      "decimal": 10047,
+      "unicode_escape": "\\u273f",
+      "name": "BLACK FLORETTE"
+    },
+    {
+      "char": "❀",
+      "codepoint": "U+2740",
+      "decimal": 10048,
+      "unicode_escape": "\\u2740",
+      "name": "WHITE FLORETTE"
+    },
+    {
+      "char": "❁",
+      "codepoint": "U+2741",
+      "decimal": 10049,
+      "unicode_escape": "\\u2741",
+      "name": "EIGHT PETALLED OUTLINED BLACK FLORETTE"
+    },
+    {
+      "char": "❂",
+      "codepoint": "U+2742",
+      "decimal": 10050,
+      "unicode_escape": "\\u2742",
+      "name": "CIRCLED OPEN CENTRE EIGHT POINTED STAR"
+    }
+  ],
+  "Private Use Area (U+E000–U+F8FF)": [
+    {
+      "char": "",
+      "codepoint": "U+E000",
+      "decimal": 57344,
+      "unicode_escape": "\\ue000",
+      "name": "UNKNOWN / PRIVATE USE",
+      "note": "First PUA code point; used by icon fonts (FontAwesome, Nerd Fonts, etc.)"
+    },
+    {
+      "char": "",
+      "codepoint": "U+E001",
+      "decimal": 57345,
+      "unicode_escape": "\\ue001",
+      "name": "UNKNOWN / PRIVATE USE",
+      "note": "Private use — meaning defined by font/application"
+    },
+    {
+      "char": "",
+      "codepoint": "U+E002",
+      "decimal": 57346,
+      "unicode_escape": "\\ue002",
+      "name": "UNKNOWN / PRIVATE USE",
+      "note": "Private use — meaning defined by font/application"
+    },
+    {
+      "char": "",
+      "codepoint": "U+E003",
+      "decimal": 57347,
+      "unicode_escape": "\\ue003",
+      "name": "UNKNOWN / PRIVATE USE",
+      "note": "Private use — meaning defined by font/application"
+    },
+    {
+      "char": "",
+      "codepoint": "U+E004",
+      "decimal": 57348,
+      "unicode_escape": "\\ue004",
+      "name": "UNKNOWN / PRIVATE USE",
+      "note": "Private use — meaning defined by font/application"
+    },
+    {
+      "char": "",
+      "codepoint": "U+E005",
+      "decimal": 57349,
+      "unicode_escape": "\\ue005",
+      "name": "UNKNOWN / PRIVATE USE",
+      "note": "Private use — meaning defined by font/application"
+    },
+    {
+      "char": "",
+      "codepoint": "U+F000",
+      "decimal": 61440,
+      "unicode_escape": "\\uf000",
+      "name": "UNKNOWN / PRIVATE USE",
+      "note": "Private use — meaning defined by font/application"
+    },
+    {
+      "char": "",
+      "codepoint": "U+F8FF",
+      "decimal": 63743,
+      "unicode_escape": "\\uf8ff",
+      "name": "UNKNOWN / PRIVATE USE",
+      "note": "Renders as Apple logo in macOS/iOS system fonts; undefined elsewhere"
+    }
+  ],
+  "Supplementary Multilingual Plane (U+10000–U+1FFFF)": [
+    {
+      "char": "𐀀",
+      "codepoint": "U+10000",
+      "decimal": 65536,
+      "unicode_escape": "\\U00010000",
+      "name": "LINEAR B SYLLABLE B008 A",
+      "note": "Linear B Syllable B008 A — first Linear B character (1500 BCE Mycenaean Greek)"
+    },
+    {
+      "char": "𐌰",
+      "codepoint": "U+10330",
+      "decimal": 66352,
+      "unicode_escape": "\\U00010330",
+      "name": "GOTHIC LETTER AHSA",
+      "note": "Gothic Letter Ahsa — 4th-century Bishop Wulfila's Gothic alphabet"
+    },
+    {
+      "char": "𐐀",
+      "codepoint": "U+10400",
+      "decimal": 66560,
+      "unicode_escape": "\\U00010400",
+      "name": "DESERET CAPITAL LETTER LONG I",
+      "note": "Deseret Capital Letter Long I — 19th-century LDS phonetic alphabet"
+    },
+    {
+      "char": "𐑐",
+      "codepoint": "U+10450",
+      "decimal": 66640,
+      "unicode_escape": "\\U00010450",
+      "name": "SHAVIAN LETTER PEEP",
+      "note": "Shavian Letter Peep — George Bernard Shaw's commissioned phonetic alphabet"
+    },
+    {
+      "char": "𐘀",
+      "codepoint": "U+10600",
+      "decimal": 67072,
+      "unicode_escape": "\\U00010600",
+      "name": "LINEAR A SIGN AB001",
+      "note": "Linear A Sign AB001 — undeciphered Minoan script"
+    },
+    {
+      "char": "𐡀",
+      "codepoint": "U+10840",
+      "decimal": 67648,
+      "unicode_escape": "\\U00010840",
+      "name": "IMPERIAL ARAMAIC LETTER ALEPH",
+      "note": "Imperial Aramaic Letter Aleph"
+    },
+    {
+      "char": "𐤀",
+      "codepoint": "U+10900",
+      "decimal": 67840,
+      "unicode_escape": "\\U00010900",
+      "name": "PHOENICIAN LETTER ALF",
+      "note": "Phoenician Letter Alf — ancestor of most alphabets"
+    },
+    {
+      "char": "𐨀",
+      "codepoint": "U+10A00",
+      "decimal": 68096,
+      "unicode_escape": "\\U00010a00",
+      "name": "KHAROSHTHI LETTER A",
+      "note": "Kharoshthi Letter A — ancient NW Indian script, written right-to-left"
+    },
+    {
+      "char": "𒀀",
+      "codepoint": "U+12000",
+      "decimal": 73728,
+      "unicode_escape": "\\U00012000",
+      "name": "CUNEIFORM SIGN A",
+      "note": "Cuneiform Sign A — 5000-year-old Mesopotamian writing"
+    },
+    {
+      "char": "𓀀",
+      "codepoint": "U+13000",
+      "decimal": 77824,
+      "unicode_escape": "\\U00013000",
+      "name": "EGYPTIAN HIEROGLYPH A001",
+      "note": "Egyptian Hieroglyph A001 — seated man determinative"
+    },
+    {
+      "char": "𝄞",
+      "codepoint": "U+1D11E",
+      "decimal": 119070,
+      "unicode_escape": "\\U0001d11e",
+      "name": "MUSICAL SYMBOL G CLEF",
+      "note": "Musical Symbol G Clef (treble clef)"
+    },
+    {
+      "char": "𝄢",
+      "codepoint": "U+1D122",
+      "decimal": 119074,
+      "unicode_escape": "\\U0001d122",
+      "name": "MUSICAL SYMBOL F CLEF",
+      "note": "Musical Symbol F Clef (bass clef)"
+    },
+    {
+      "char": "𝐀",
+      "codepoint": "U+1D400",
+      "decimal": 119808,
+      "unicode_escape": "\\U0001d400",
+      "name": "MATHEMATICAL BOLD CAPITAL A",
+      "note": "Mathematical Bold Capital A"
+    },
+    {
+      "char": "𝐴",
+      "codepoint": "U+1D434",
+      "decimal": 119860,
+      "unicode_escape": "\\U0001d434",
+      "name": "MATHEMATICAL ITALIC CAPITAL A",
+      "note": "Mathematical Italic Capital A"
+    },
+    {
+      "char": "𝒜",
+      "codepoint": "U+1D49C",
+      "decimal": 119964,
+      "unicode_escape": "\\U0001d49c",
+      "name": "MATHEMATICAL SCRIPT CAPITAL A",
+      "note": "Mathematical Script Capital A — Bernoulli's script"
+    },
+    {
+      "char": "𝔸",
+      "codepoint": "U+1D538",
+      "decimal": 120120,
+      "unicode_escape": "\\U0001d538",
+      "name": "MATHEMATICAL DOUBLE-STRUCK CAPITAL A",
+      "note": "Mathematical Double-Struck Capital A — blackboard bold (ℝ-style)"
+    },
+    {
+      "char": "🂡",
+      "codepoint": "U+1F0A1",
+      "decimal": 127137,
+      "unicode_escape": "\\U0001f0a1",
+      "name": "PLAYING CARD ACE OF SPADES",
+      "note": "Playing Card Ace of Spades"
+    },
+    {
+      "char": "🀄",
+      "codepoint": "U+1F004",
+      "decimal": 126980,
+      "unicode_escape": "\\U0001f004",
+      "name": "MAHJONG TILE RED DRAGON",
+      "note": "Mahjong Tile Red Dragon"
+    }
+  ],
+  "Supplementary Ideographic Plane (U+20000–U+2FFFF)": [
+    {
+      "char": "𠀀",
+      "codepoint": "U+20000",
+      "decimal": 131072,
+      "unicode_escape": "\\U00020000",
+      "name": "CJK UNIFIED IDEOGRAPH-20000",
+      "note": "CJK Extension B — first character; archaic/rare Chinese"
+    },
+    {
+      "char": "𠂉",
+      "codepoint": "U+20089",
+      "decimal": 131209,
+      "unicode_escape": "\\U00020089",
+      "name": "CJK UNIFIED IDEOGRAPH-20089",
+      "note": "CJK Extension B — used in Japanese names, requires special font"
+    },
+    {
+      "char": "𠀋",
+      "codepoint": "U+2000B",
+      "decimal": 131083,
+      "unicode_escape": "\\U0002000b",
+      "name": "CJK UNIFIED IDEOGRAPH-2000B",
+      "note": "CJK Extension B"
+    },
+    {
+      "char": "𠁤",
+      "codepoint": "U+20064",
+      "decimal": 131172,
+      "unicode_escape": "\\U00020064",
+      "name": "CJK UNIFIED IDEOGRAPH-20064",
+      "note": "CJK Extension B"
+    },
+    {
+      "char": "𠃢",
+      "codepoint": "U+200E2",
+      "decimal": 131298,
+      "unicode_escape": "\\U000200e2",
+      "name": "CJK UNIFIED IDEOGRAPH-200E2",
+      "note": "CJK Extension B"
+    },
+    {
+      "char": "𡿿",
+      "codepoint": "U+21FFF",
+      "decimal": 139263,
+      "unicode_escape": "\\U00021fff",
+      "name": "CJK UNIFIED IDEOGRAPH-21FFF",
+      "note": "CJK Extension B — boundary character"
+    },
+    {
+      "char": "𣊸",
+      "codepoint": "U+232B8",
+      "decimal": 144056,
+      "unicode_escape": "\\U000232b8",
+      "name": "CJK UNIFIED IDEOGRAPH-232B8",
+      "note": "CJK Extension C — extremely rare; academic/historical use only"
+    },
+    {
+      "char": "𤓉",
+      "codepoint": "U+244C9",
+      "decimal": 148681,
+      "unicode_escape": "\\U000244c9",
+      "name": "CJK UNIFIED IDEOGRAPH-244C9",
+      "note": "CJK Extension D"
+    },
+    {
+      "char": "𥩯",
+      "codepoint": "U+25A6F",
+      "decimal": 154223,
+      "unicode_escape": "\\U00025a6f",
+      "name": "CJK UNIFIED IDEOGRAPH-25A6F",
+      "note": "CJK Extension E"
+    },
+    {
+      "char": "𫠠",
+      "codepoint": "U+2B820",
+      "decimal": 178208,
+      "unicode_escape": "\\U0002b820",
+      "name": "CJK UNIFIED IDEOGRAPH-2B820",
+      "note": "CJK Extension F — added in Unicode 10.0 (2017)"
+    }
+  ],
+  "C0 Control Characters (U+0000–U+001F)": [
+    {
+      "char": "<ctrl: U+0000>",
+      "codepoint": "U+0000",
+      "decimal": 0,
+      "unicode_escape": "\\x00",
+      "name": "NULL",
+      "note": "NULL — C string terminator; can truncate strings in vulnerable parsers"
+    },
+    {
+      "char": "<ctrl: U+0001>",
+      "codepoint": "U+0001",
+      "decimal": 1,
+      "unicode_escape": "\\x01",
+      "name": "START OF HEADING",
+      "note": "START OF HEADING — legacy teletype control"
+    },
+    {
+      "char": "<ctrl: U+0002>",
+      "codepoint": "U+0002",
+      "decimal": 2,
+      "unicode_escape": "\\x02",
+      "name": "START OF TEXT",
+      "note": "START OF TEXT"
+    },
+    {
+      "char": "<ctrl: U+0003>",
+      "codepoint": "U+0003",
+      "decimal": 3,
+      "unicode_escape": "\\x03",
+      "name": "END OF TEXT",
+      "note": "END OF TEXT — Ctrl+C; SIGINT in Unix terminals"
+    },
+    {
+      "char": "<ctrl: U+0004>",
+      "codepoint": "U+0004",
+      "decimal": 4,
+      "unicode_escape": "\\x04",
+      "name": "END OF TRANSMISSION",
+      "note": "END OF TRANSMISSION — Ctrl+D; EOF in Unix"
+    },
+    {
+      "char": "<ctrl: U+0005>",
+      "codepoint": "U+0005",
+      "decimal": 5,
+      "unicode_escape": "\\x05",
+      "name": "ENQUIRY",
+      "note": "ENQUIRY — requests status from remote device"
+    },
+    {
+      "char": "<ctrl: U+0006>",
+      "codepoint": "U+0006",
+      "decimal": 6,
+      "unicode_escape": "\\x06",
+      "name": "ACKNOWLEDGE",
+      "note": "ACKNOWLEDGE"
+    },
+    {
+      "char": "<ctrl: U+0007>",
+      "codepoint": "U+0007",
+      "decimal": 7,
+      "unicode_escape": "\\x07",
+      "name": "BELL",
+      "note": "BELL — triggers audible/visual alert; \\a in C"
+    },
+    {
+      "char": "<ctrl: U+0008>",
+      "codepoint": "U+0008",
+      "decimal": 8,
+      "unicode_escape": "\\x08",
+      "name": "BACKSPACE",
+      "note": "BACKSPACE — \\b"
+    },
+    {
+      "char": "<ctrl: U+0009>",
+      "codepoint": "U+0009",
+      "decimal": 9,
+      "unicode_escape": "\\t",
+      "name": "CHARACTER TABULATION",
+      "note": "CHARACTER TABULATION — Tab; \\t"
+    },
+    {
+      "char": "<ctrl: U+000A>",
+      "codepoint": "U+000A",
+      "decimal": 10,
+      "unicode_escape": "\\n",
+      "name": "LINE FEED",
+      "note": "LINE FEED — Unix/macOS newline; \\n"
+    },
+    {
+      "char": "<ctrl: U+000B>",
+      "codepoint": "U+000B",
+      "decimal": 11,
+      "unicode_escape": "\\x0b",
+      "name": "LINE TABULATION",
+      "note": "LINE TABULATION — Vertical Tab; \\v"
+    },
+    {
+      "char": "<ctrl: U+000C>",
+      "codepoint": "U+000C",
+      "decimal": 12,
+      "unicode_escape": "\\x0c",
+      "name": "FORM FEED",
+      "note": "FORM FEED — printer page eject; \\f"
+    },
+    {
+      "char": "<ctrl: U+000D>",
+      "codepoint": "U+000D",
+      "decimal": 13,
+      "unicode_escape": "\\r",
+      "name": "CARRIAGE RETURN",
+      "note": "CARRIAGE RETURN — Windows uses CR+LF; \\r"
+    },
+    {
+      "char": "<ctrl: U+000E>",
+      "codepoint": "U+000E",
+      "decimal": 14,
+      "unicode_escape": "\\x0e",
+      "name": "SHIFT OUT",
+      "note": "SHIFT OUT — switches to alternate character set (G1)"
+    },
+    {
+      "char": "<ctrl: U+000F>",
+      "codepoint": "U+000F",
+      "decimal": 15,
+      "unicode_escape": "\\x0f",
+      "name": "SHIFT IN",
+      "note": "SHIFT IN — returns to default character set (G0)"
+    },
+    {
+      "char": "<ctrl: U+001A>",
+      "codepoint": "U+001A",
+      "decimal": 26,
+      "unicode_escape": "\\x1a",
+      "name": "SUBSTITUTE",
+      "note": "SUBSTITUTE — Ctrl+Z; EOF on Windows / suspend in some terminals"
+    },
+    {
+      "char": "<ctrl: U+001B>",
+      "codepoint": "U+001B",
+      "decimal": 27,
+      "unicode_escape": "\\x1b",
+      "name": "ESCAPE",
+      "note": "ESCAPE — begins ANSI/VT100 terminal escape sequences; \\e"
+    },
+    {
+      "char": "<ctrl: U+001C>",
+      "codepoint": "U+001C",
+      "decimal": 28,
+      "unicode_escape": "\\x1c",
+      "name": "FILE SEPARATOR",
+      "note": "FILE SEPARATOR"
+    },
+    {
+      "char": "<ctrl: U+001D>",
+      "codepoint": "U+001D",
+      "decimal": 29,
+      "unicode_escape": "\\x1d",
+      "name": "GROUP SEPARATOR",
+      "note": "GROUP SEPARATOR"
+    },
+    {
+      "char": "<ctrl: U+001E>",
+      "codepoint": "U+001E",
+      "decimal": 30,
+      "unicode_escape": "\\x1e",
+      "name": "RECORD SEPARATOR",
+      "note": "RECORD SEPARATOR — used in some data formats (MARC, RFC 7464)"
+    },
+    {
+      "char": "<ctrl: U+001F>",
+      "codepoint": "U+001F",
+      "decimal": 31,
+      "unicode_escape": "\\x1f",
+      "name": "UNIT SEPARATOR",
+      "note": "UNIT SEPARATOR"
+    }
+  ],
+  "Invisible & Directional Characters": [
+    {
+      "char": "<invisible: U+200B>",
+      "codepoint": "U+200B",
+      "decimal": 8203,
+      "unicode_escape": "\\u200b",
+      "name": "ZERO WIDTH SPACE",
+      "note": "ZERO WIDTH SPACE — invisible; can bypass word-length filters and URL blocklists"
+    },
+    {
+      "char": "<invisible: U+200C>",
+      "codepoint": "U+200C",
+      "decimal": 8204,
+      "unicode_escape": "\\u200c",
+      "name": "ZERO WIDTH NON-JOINER",
+      "note": "ZERO WIDTH NON-JOINER (ZWNJ) — prevents ligature formation between letters"
+    },
+    {
+      "char": "<invisible: U+200D>",
+      "codepoint": "U+200D",
+      "decimal": 8205,
+      "unicode_escape": "\\u200d",
+      "name": "ZERO WIDTH JOINER",
+      "note": "ZERO WIDTH JOINER (ZWJ) — forces ligatures; used to build multi-part emoji (👨‍👩‍👧 = 3 chars + 2 ZWJ)"
+    },
+    {
+      "char": "<invisible: U+200E>",
+      "codepoint": "U+200E",
+      "decimal": 8206,
+      "unicode_escape": "\\u200e",
+      "name": "LEFT-TO-RIGHT MARK",
+      "note": "LEFT-TO-RIGHT MARK — invisible; nudges bidi algorithm toward LTR"
+    },
+    {
+      "char": "<invisible: U+200F>",
+      "codepoint": "U+200F",
+      "decimal": 8207,
+      "unicode_escape": "\\u200f",
+      "name": "RIGHT-TO-LEFT MARK",
+      "note": "RIGHT-TO-LEFT MARK — invisible; nudges bidi algorithm toward RTL"
+    },
+    {
+      "char": "<invisible: U+202E>",
+      "codepoint": "U+202E",
+      "decimal": 8238,
+      "unicode_escape": "\\u202e",
+      "name": "RIGHT-TO-LEFT OVERRIDE",
+      "note": "RIGHT-TO-LEFT OVERRIDE (RLO) — reverses visible text; used in filename spoofing (gpj.exe→exe.jpg)"
+    },
+    {
+      "char": "<invisible: U+202D>",
+      "codepoint": "U+202D",
+      "decimal": 8237,
+      "unicode_escape": "\\u202d",
+      "name": "LEFT-TO-RIGHT OVERRIDE",
+      "note": "LEFT-TO-RIGHT OVERRIDE (LRO) — forces LTR display"
+    },
+    {
+      "char": "<invisible: U+202C>",
+      "codepoint": "U+202C",
+      "decimal": 8236,
+      "unicode_escape": "\\u202c",
+      "name": "POP DIRECTIONAL FORMATTING",
+      "note": "POP DIRECTIONAL FORMATTING — ends a RLO/LRO scope"
+    },
+    {
+      "char": "<invisible: U+2060>",
+      "codepoint": "U+2060",
+      "decimal": 8288,
+      "unicode_escape": "\\u2060",
+      "name": "WORD JOINER",
+      "note": "WORD JOINER — prevents line break without adding space; cleaner alternative to U+FEFF"
+    },
+    {
+      "char": "<invisible: U+2061>",
+      "codepoint": "U+2061",
+      "decimal": 8289,
+      "unicode_escape": "\\u2061",
+      "name": "FUNCTION APPLICATION",
+      "note": "FUNCTION APPLICATION — invisible math operator (f⁡x means f applied to x)"
+    },
+    {
+      "char": "<invisible: U+2062>",
+      "codepoint": "U+2062",
+      "decimal": 8290,
+      "unicode_escape": "\\u2062",
+      "name": "INVISIBLE TIMES",
+      "note": "INVISIBLE TIMES — invisible × in math"
+    },
+    {
+      "char": "<invisible: U+2063>",
+      "codepoint": "U+2063",
+      "decimal": 8291,
+      "unicode_escape": "\\u2063",
+      "name": "INVISIBLE SEPARATOR",
+      "note": "INVISIBLE SEPARATOR — invisible , in math"
+    },
+    {
+      "char": "<invisible: U+2064>",
+      "codepoint": "U+2064",
+      "decimal": 8292,
+      "unicode_escape": "\\u2064",
+      "name": "INVISIBLE PLUS",
+      "note": "INVISIBLE PLUS — invisible + in math"
+    },
+    {
+      "char": "<invisible: U+FEFF>",
+      "codepoint": "U+FEFF",
+      "decimal": 65279,
+      "unicode_escape": "\\ufeff",
+      "name": "ZERO WIDTH NO-BREAK SPACE",
+      "note": "BYTE ORDER MARK (BOM) — U+FEFF at file start signals UTF-16/UTF-8 endianness; also ZWNBSP"
+    },
+    {
+      "char": "<invisible: U+00AD>",
+      "codepoint": "U+00AD",
+      "decimal": 173,
+      "unicode_escape": "\\xad",
+      "name": "SOFT HYPHEN",
+      "note": "SOFT HYPHEN (SHY) — invisible unless the renderer breaks the line here"
+    }
+  ],
+  "Homoglyphs": [
+    {
+      "char": "а",
+      "codepoint": "U+0430",
+      "decimal": 1072,
+      "unicode_escape": "\\u0430",
+      "name": "CYRILLIC SMALL LETTER A",
+      "note": "а — Cyrillic small A; visually identical to Latin 'a'; core IDN homoglyph attack character"
+    },
+    {
+      "char": "е",
+      "codepoint": "U+0435",
+      "decimal": 1077,
+      "unicode_escape": "\\u0435",
+      "name": "CYRILLIC SMALL LETTER IE",
+      "note": "е — Cyrillic small IE; identical to Latin 'e'"
+    },
+    {
+      "char": "о",
+      "codepoint": "U+043E",
+      "decimal": 1086,
+      "unicode_escape": "\\u043e",
+      "name": "CYRILLIC SMALL LETTER O",
+      "note": "о — Cyrillic small O; identical to Latin 'o'"
+    },
+    {
+      "char": "р",
+      "codepoint": "U+0440",
+      "decimal": 1088,
+      "unicode_escape": "\\u0440",
+      "name": "CYRILLIC SMALL LETTER ER",
+      "note": "р — Cyrillic small ER; identical to Latin 'p'"
+    },
+    {
+      "char": "с",
+      "codepoint": "U+0441",
+      "decimal": 1089,
+      "unicode_escape": "\\u0441",
+      "name": "CYRILLIC SMALL LETTER ES",
+      "note": "с — Cyrillic small ES; identical to Latin 'c'"
+    },
+    {
+      "char": "х",
+      "codepoint": "U+0445",
+      "decimal": 1093,
+      "unicode_escape": "\\u0445",
+      "name": "CYRILLIC SMALL LETTER HA",
+      "note": "х — Cyrillic small HA; identical to Latin 'x'"
+    },
+    {
+      "char": "А",
+      "codepoint": "U+0410",
+      "decimal": 1040,
+      "unicode_escape": "\\u0410",
+      "name": "CYRILLIC CAPITAL LETTER A",
+      "note": "А — Cyrillic capital A; identical to Latin 'A'"
+    },
+    {
+      "char": "В",
+      "codepoint": "U+0412",
+      "decimal": 1042,
+      "unicode_escape": "\\u0412",
+      "name": "CYRILLIC CAPITAL LETTER VE",
+      "note": "В — Cyrillic capital VE; identical to Latin 'B'"
+    },
+    {
+      "char": "Н",
+      "codepoint": "U+041D",
+      "decimal": 1053,
+      "unicode_escape": "\\u041d",
+      "name": "CYRILLIC CAPITAL LETTER EN",
+      "note": "Н — Cyrillic capital EN; identical to Latin 'H'"
+    },
+    {
+      "char": "М",
+      "codepoint": "U+041C",
+      "decimal": 1052,
+      "unicode_escape": "\\u041c",
+      "name": "CYRILLIC CAPITAL LETTER EM",
+      "note": "М — Cyrillic capital EM; identical to Latin 'M'"
+    },
+    {
+      "char": "Т",
+      "codepoint": "U+0422",
+      "decimal": 1058,
+      "unicode_escape": "\\u0422",
+      "name": "CYRILLIC CAPITAL LETTER TE",
+      "note": "Т — Cyrillic capital TE; identical to Latin 'T'"
+    },
+    {
+      "char": "С",
+      "codepoint": "U+0421",
+      "decimal": 1057,
+      "unicode_escape": "\\u0421",
+      "name": "CYRILLIC CAPITAL LETTER ES",
+      "note": "С — Cyrillic capital ES; identical to Latin 'C'"
+    },
+    {
+      "char": "ο",
+      "codepoint": "U+03BF",
+      "decimal": 959,
+      "unicode_escape": "\\u03bf",
+      "name": "GREEK SMALL LETTER OMICRON",
+      "note": "ο — Greek small omicron; identical to Latin 'o'"
+    },
+    {
+      "char": "α",
+      "codepoint": "U+03B1",
+      "decimal": 945,
+      "unicode_escape": "\\u03b1",
+      "name": "GREEK SMALL LETTER ALPHA",
+      "note": "α — Greek alpha; resembles Latin 'a'"
+    },
+    {
+      "char": "Ι",
+      "codepoint": "U+0399",
+      "decimal": 921,
+      "unicode_escape": "\\u0399",
+      "name": "GREEK CAPITAL LETTER IOTA",
+      "note": "Ι — Greek capital iota; identical to Latin 'I'"
+    },
+    {
+      "char": "Ο",
+      "codepoint": "U+039F",
+      "decimal": 927,
+      "unicode_escape": "\\u039f",
+      "name": "GREEK CAPITAL LETTER OMICRON",
+      "note": "Ο — Greek capital omicron; identical to Latin 'O'"
+    },
+    {
+      "char": "Β",
+      "codepoint": "U+0392",
+      "decimal": 914,
+      "unicode_escape": "\\u0392",
+      "name": "GREEK CAPITAL LETTER BETA",
+      "note": "Β — Greek capital beta; identical to Latin 'B'"
+    },
+    {
+      "char": "ӏ",
+      "codepoint": "U+04CF",
+      "decimal": 1231,
+      "unicode_escape": "\\u04cf",
+      "name": "CYRILLIC SMALL LETTER PALOCHKA",
+      "note": "ӏ — Cyrillic palochka; resembles lowercase 'l' and digit '1'"
+    },
+    {
+      "char": "ℓ",
+      "codepoint": "U+2113",
+      "decimal": 8467,
+      "unicode_escape": "\\u2113",
+      "name": "SCRIPT SMALL L",
+      "note": "ℓ — Script small l; resembles lowercase 'l' or digit '1'"
+    },
+    {
+      "char": "ı",
+      "codepoint": "U+0131",
+      "decimal": 305,
+      "unicode_escape": "\\u0131",
+      "name": "LATIN SMALL LETTER DOTLESS I",
+      "note": "ı — Latin dotless i; resembles lowercase 'l' in many sans-serif fonts"
+    },
+    {
+      "char": "0",
+      "codepoint": "U+0030",
+      "decimal": 48,
+      "unicode_escape": "0",
+      "name": "DIGIT ZERO",
+      "note": "0 — digit zero vs Ο (Greek omicron) vs О (Cyrillic O)"
+    },
+    {
+      "char": "l",
+      "codepoint": "U+006C",
+      "decimal": 108,
+      "unicode_escape": "l",
+      "name": "LATIN SMALL LETTER L",
+      "note": "l — Latin lowercase L vs I (capital i) vs 1 (digit one) in many fonts"
+    }
+  ]
+}
