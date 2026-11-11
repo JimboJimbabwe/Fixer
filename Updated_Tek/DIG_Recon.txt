@@ -1,0 +1,7 @@
+while read domain; do
+    echo "=== $domain ===" >> dig_results.txt
+    for type in A AAAA MX TXT NS SOA CNAME PTR; do
+        echo "-- $type --" >> dig_results.txt
+        dig "$type" "$domain" >> dig_results.txt
+    done
+done < hosts.txt
