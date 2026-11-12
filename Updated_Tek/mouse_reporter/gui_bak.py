@@ -405,6 +405,7 @@ class App:
     def __init__(self, root, project_root: Path):
         self.root         = root
         self.project_root = project_root
+        root.withdraw()                    # hide until fully built
         root.title(f"Security Testing Appendix — {project_root.name}")
         root.geometry("1240x900")
         root.configure(bg=BG)
@@ -424,6 +425,7 @@ class App:
         scaffold_project(self.checklist, self.project_root)
 
         self._build()
+        root.deiconify()                   # reveal once fully built
 
     # ── layout ────────────────────────────────────────────────────────────────
 
