@@ -2,15 +2,19 @@
 """
 Security Testing Appendix Organizer
 ------------------------------------
-Saves findings as:
-  data/<cat_id>_<cat_slug>/<test_id>_<test_slug>/
-      Report.json
-      images/image_N.ext …
+Usage:  python3 app.py <project_name>
 
-Usage:  python3 app.py
+Creates (if not already present):
+  data/<project_slug>/
+    <cat_id>_<cat_slug>/
+      <test_id>_<test_slug>/
+        images/
+        Report.json   ← written on save
+
 Requires: Python 3.8+  (stdlib only)
 """
 
+import sys
 import tkinter as tk
 from tkinter import filedialog, messagebox
 import json, re, shutil
@@ -115,156 +119,6 @@ def pill_btn(parent, text, bg, fg, active_bg, cmd, padx=10, pady=4, font=None):
                      activeforeground=fg, relief="flat", cursor="hand2",
                      padx=padx, pady=pady, bd=0, command=cmd,
                      highlightthickness=0)
-
-# ─────────────────────── project dialog ──────────────────────────────────────
-class ProjectDialog(tk.Toplevel):
-    """
-    Modal dialog shown at startup.
-    Lists existing projects (sub-folders of DATA_ROOT) and lets the user
-    pick one or type a new name.  Sets self.result to the chosen Path or None.
-    """
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.title("Open / New Project")
-        self.configure(bg=BG_PANEL)
-        self.resizable(False, False)
-        self.result = None
-        self._build()
-        # centre over parent
-        self.update_idletasks()
-        pw, ph = parent.winfo_screenwidth(), parent.winfo_screenheight()
-        w, h = self.winfo_width(), self.winfo_height()
-        self.geometry(f"{w}x{h}+{(pw-w)//2}+{(ph-h)//2}")
-        self.grab_set()
-        self.protocol("WM_DELETE_WINDOW", self._cancel)
-        self.wait_window()
-
-    def _build(self):
-        # accent top bar
-        tk.Frame(self, bg=ACCENT, height=3).pack(fill="x")
-
-        body = tk.Frame(self, bg=BG_PANEL)
-        body.pack(fill="both", expand=True, padx=28, pady=20)
-
-        tk.Label(body, text="🔐  Security Testing Appendix",
-                 font=("Segoe UI", 13, "bold"),
-                 bg=BG_PANEL, fg=FG).pack(anchor="w")
-        tk.Label(body, text="Select an existing project or create a new one.",
-                 font=("Segoe UI", 9),
-                 bg=BG_PANEL, fg=FG_SUB).pack(anchor="w", pady=(2, 16))
-
-        # ── existing projects ─────────────────────────────────────────────
-        existing = self._list_projects()
-        if existing:
-            tk.Label(body, text="EXISTING PROJECTS",
-                     font=("Segoe UI", 8, "bold"),
-                     bg=BG_PANEL, fg=FG_SUB).pack(anchor="w", pady=(0, 6))
-
-            lb_frame = tk.Frame(body, bg=BORDER, highlightthickness=0)
-            lb_frame.pack(fill="x", pady=(0, 16))
-
-            self._listbox = tk.Listbox(
-                lb_frame,
-                font=("Consolas", 10),
-                bg=BG_ROW, fg=FG, selectbackground=ACCENT,
-                selectforeground=FG, relief="flat", bd=0,
-                activestyle="none",
-                height=min(len(existing), 6),
-            )
-            for name in existing:
-                self._listbox.insert("end", f"  {name}")
-            self._listbox.pack(fill="x", padx=1, pady=1)
-            self._listbox.bind("<Double-Button-1>", lambda _: self._open_selected())
-            self._listbox.bind("<<ListboxSelect>>", self._on_lb_select)
-        else:
-            self._listbox = None
-
-        # ── new project name ──────────────────────────────────────────────
-        tk.Label(body, text="NEW PROJECT NAME",
-                 font=("Segoe UI", 8, "bold"),
-                 bg=BG_PANEL, fg=FG_SUB).pack(anchor="w", pady=(0, 6))
-
-        entry_wrap = tk.Frame(body, bg=BORDER_HI,
-                              highlightthickness=1,
-                              highlightbackground=BORDER_HI)
-        entry_wrap.pack(fill="x")
-
-        self._name_var = tk.StringVar()
-        self._entry = tk.Entry(entry_wrap, textvariable=self._name_var,
-                               font=("Consolas", 11),
-                               bg=BG_INPUT, fg=FG, insertbackground=FG,
-                               relief="flat", bd=0,
-                               highlightthickness=1,
-                               highlightcolor=ACCENT,
-                               highlightbackground=BORDER_HI)
-        self._entry.pack(fill="x", ipady=7, padx=10)
-        self._entry.focus_set()
-        self._entry.bind("<Return>", lambda _: self._create_new())
-        # typing in entry deselects listbox
-        self._name_var.trace_add("write", self._on_type)
-
-        # ── buttons ───────────────────────────────────────────────────────
-        btn_row = tk.Frame(body, bg=BG_PANEL)
-        btn_row.pack(fill="x", pady=(16, 0))
-
-        pill_btn(btn_row, "Cancel", BG_PANEL, FG_SUB, BG_HOVER,
-                 self._cancel, padx=12, pady=6).pack(side="left")
-
-        self._open_btn = pill_btn(btn_row, "Open Selected →",
-                                  BG_PANEL, FG_DIM, BG_HOVER,
-                                  self._open_selected, padx=12, pady=6)
-        self._open_btn.pack(side="right", padx=(8, 0))
-
-        pill_btn(btn_row, "Create Project →",
-                 ACCENT, FG, "#6a50e0",
-                 self._create_new, padx=12, pady=6,
-                 font=("Segoe UI", 9, "bold")).pack(side="right")
-
-    def _list_projects(self):
-        if not DATA_ROOT.exists():
-            return []
-        return sorted(p.name for p in DATA_ROOT.iterdir() if p.is_dir())
-
-    def _on_lb_select(self, _=None):
-        if self._listbox and self._listbox.curselection():
-            self._open_btn.configure(fg=FG)
-
-    def _on_type(self, *_):
-        # deselect listbox when user types a new name
-        if self._listbox:
-            self._listbox.selection_clear(0, "end")
-        self._open_btn.configure(fg=FG_DIM)
-
-    def _open_selected(self):
-        if not self._listbox:
-            return
-        sel = self._listbox.curselection()
-        if not sel:
-            messagebox.showwarning("No selection",
-                "Click a project in the list to open it.", parent=self)
-            return
-        name = self._listbox.get(sel[0]).strip()
-        self.result = DATA_ROOT / name
-        self.destroy()
-
-    def _create_new(self):
-        name = self._name_var.get().strip()
-        if not name:
-            messagebox.showwarning("Name required",
-                "Enter a project name to create.", parent=self)
-            return
-        slug = slugify(name)
-        if not slug:
-            messagebox.showwarning("Invalid name",
-                "Use letters, numbers or spaces.", parent=self)
-            return
-        self.result = DATA_ROOT / slug
-        self.destroy()
-
-    def _cancel(self):
-        self.result = None
-        self.destroy()
-
 
 # ───────────────────────── URL list widget ────────────────────────────────────
 class URLListWidget(tk.Frame):
@@ -548,9 +402,10 @@ class DetailPanel(tk.Frame):
 
 # ───────────────────────────── main app ──────────────────────────────────────
 class App:
-    def __init__(self, root):
-        self.root = root
-        root.title("Security Testing Appendix")
+    def __init__(self, root, project_root: Path):
+        self.root         = root
+        self.project_root = project_root
+        root.title(f"Security Testing Appendix — {project_root.name}")
         root.geometry("1240x900")
         root.configure(bg=BG)
         root.minsize(900, 600)
@@ -558,30 +413,17 @@ class App:
         try: root.tk.call("tk", "scaling", 1.35)
         except: pass
 
-        self.checklist  = json.loads(CHECKLIST.read_text(encoding="utf-8"))
-        self.expanded   = None
-        self.detail_ref = None
-        self.row_refs   = {}
-        self.stats_var  = tk.StringVar()
-        self.project_var = tk.StringVar()
+        self.checklist   = json.loads(CHECKLIST.read_text(encoding="utf-8"))
+        self.expanded    = None
+        self.detail_ref  = None
+        self.row_refs    = {}
+        self.stats_var   = tk.StringVar()
+        self.project_var = tk.StringVar(value=project_root.name)
 
-        # ── project selection ─────────────────────────────────────────────
-        DATA_ROOT.mkdir(exist_ok=True)
-        dlg = ProjectDialog(root)
-        if dlg.result is None:
-            root.destroy()
-            return
-
-        self.project_root = dlg.result
-        self.project_var.set(self.project_root.name)
-
-        # scaffold all folders immediately
-        n = scaffold_project(self.checklist, self.project_root)
+        # scaffold every test folder up front
+        scaffold_project(self.checklist, self.project_root)
 
         self._build()
-
-        # brief status flash in header
-        self.stats_var.set(f"Project '{self.project_root.name}' — {n} folders ready")
 
     # ── layout ────────────────────────────────────────────────────────────────
 
@@ -855,13 +697,30 @@ class App:
 
 # ─────────────────────────── entry point ─────────────────────────────────────
 def main():
+    if len(sys.argv) < 2:
+        print("Usage: python3 app.py <project_name>")
+        print("  e.g. python3 app.py \"Acme Corp Q4 Pentest\"")
+        sys.exit(1)
+
+    project_name = " ".join(sys.argv[1:])   # allow spaces without quotes too
+    project_slug = slugify(project_name)
+    if not project_slug:
+        print("Error: project name must contain at least one letter or digit.")
+        sys.exit(1)
+
+    project_root = DATA_ROOT / project_slug
+    is_new = not project_root.exists()
+
     if not CHECKLIST.exists():
-        root = tk.Tk(); root.withdraw()
-        messagebox.showerror("Missing file",
-            f"checklist.json not found.\n\nExpected: {CHECKLIST.resolve()}")
-        return
+        print(f"Error: checklist.json not found at {CHECKLIST.resolve()}")
+        sys.exit(1)
+
     root = tk.Tk()
-    App(root)
+    App(root, project_root)
+    if is_new:
+        print(f"Created project: {project_root}")
+    else:
+        print(f"Opened project:  {project_root}")
     root.mainloop()
 
 if __name__ == "__main__":
