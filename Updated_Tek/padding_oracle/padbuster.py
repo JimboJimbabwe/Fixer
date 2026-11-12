@@ -159,6 +159,33 @@ def _parse_cookie_header(header_val: str) -> dict[str, str]:
     return cookies
 
 
+def _strip_doctype(xml_str: str) -> str:
+    """
+    Remove a DOCTYPE declaration from an XML string, including its internal
+    subset (the [...] block that Burp adds).  A regex like [^>]* fails here
+    because > appears inside the internal subset; we scan character-by-character
+    instead.
+    """
+    start = xml_str.find("<!DOCTYPE")
+    if start == -1:
+        return xml_str
+
+    bracket = xml_str.find("[", start)
+    gt       = xml_str.find(">", start)
+
+    if bracket != -1 and bracket < gt:
+        # Has an internal subset — find the matching ]>
+        end = xml_str.find("]>", bracket)
+        if end != -1:
+            return xml_str[:start] + xml_str[end + 2:]
+
+    # No internal subset (or couldn't find ]>) — strip to the first bare >
+    if gt != -1:
+        return xml_str[:start] + xml_str[gt + 1:]
+
+    return xml_str   # DOCTYPE not properly closed — leave as-is and let ET complain
+
+
 def parse_burp_xml(filepath: str) -> list[Endpoint]:
     try:
         with open(filepath, "r", encoding="utf-8", errors="replace") as fh:
@@ -167,8 +194,15 @@ def parse_burp_xml(filepath: str) -> list[Endpoint]:
         print(f"{RED}[ERROR]{RESET} File not found: {filepath}", file=sys.stderr)
         sys.exit(1)
 
-    # Strip DOCTYPE so ElementTree can parse without an external resolver
-    raw_xml = re.sub(r"<!DOCTYPE[^>]*(?:\[.*?\])?>", "", raw_xml, flags=re.DOTALL)
+    # Strip DOCTYPE so ElementTree can parse without an external resolver.
+    # Burp's DOCTYPE contains an internal subset with its own > characters, e.g.:
+    #   <!DOCTYPE items [
+    #     <!ELEMENT items (item*)>   ← > inside the block
+    #   ]>
+    # A simple [^>]* regex stops at the first > it sees (inside the block),
+    # leaving broken XML.  We scan manually: if a [ follows the DOCTYPE keyword,
+    # we look for the closing ]>; otherwise we look for the bare >.
+    raw_xml = _strip_doctype(raw_xml)
 
     try:
         root = ET.fromstring(raw_xml)
