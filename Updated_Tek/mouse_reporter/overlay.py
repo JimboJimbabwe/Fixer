@@ -721,6 +721,25 @@ class ChecklistOverlay:
         self.root.attributes("-topmost", True)
         self.status_win.lift()
 
+        # Content drawn into a widget BEFORE the window was actually mapped/activated
+        # by the window manager can end up never painted into the visible backing
+        # store on Cocoa - the window and widgets exist, nothing on screen reflects
+        # them. Re-issue the drawing now that the window is actually up, and force a
+        # geometry round-trip on each window, which makes Tk re-expose/repaint it.
+        self.draw()
+        self._refresh_status()
+        for win, geom in ((self.root, f"{self.w}x{self.h}+{self.x0}+{self.y0}"),
+                           (self.status_win, f"560x56+{self.x0}+{self.y0 + self.h + 6}")):
+            try:
+                win.withdraw()
+                win.update_idletasks()
+                win.deiconify()
+                win.geometry(geom)
+                win.update_idletasks()
+            except tk.TclError:
+                pass
+        print("[overlay] activation + forced redraw done", flush=True)
+
     def run(self):
         signal.signal(signal.SIGINT, self.request_quit)
         if hasattr(signal, "SIGTERM"):
