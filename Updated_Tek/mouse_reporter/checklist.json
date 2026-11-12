@@ -1,0 +1,114 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "Fingerprinting and Reconnaissance",
+      "tests": [
+        {"id": "1.1", "title": "Comprehensive DNS Record enumeration with Dig"},
+        {"id": "1.2", "title": "Subdomain enumeration using Subfinder"},
+        {"id": "1.3", "title": "Network Fingerprinting using NMAP Stealth Scan"},
+        {"id": "1.4", "title": "WAF Fingerprinting with NMAP Script Scan and wafW00f"},
+        {"id": "1.5", "title": "Username enumeration with NMAP Script Scan - Finger Service"},
+        {"id": "1.6", "title": "Identifying Hidden Attack surfaces with Arjun"},
+        {"id": "1.7", "title": "Identifying Endpoints with ffuf"}
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Web Application Configuration",
+      "tests": [
+        {"id": "2.1", "title": "Testing for Clickjacking with Burp Suite extension Clickbandit"},
+        {"id": "2.2", "title": "Testing CORS Configuration with Corscanner and Python"},
+        {"id": "2.3", "title": "Testing for Secure Cookies Attributes with OWASP ZAP and Python"},
+        {"id": "2.4", "title": "Testing for Secure Headers with Humble and Nuclei"},
+        {"id": "2.5", "title": "Testing CSP Configuration with Python and Nuclei"},
+        {"id": "2.6", "title": "Testing for HTTP Strict Transport Security Configurations with NMAP and Python"},
+        {"id": "2.7", "title": "Identifying content of exposed Meta-Files with Katana and Python"},
+        {"id": "2.8", "title": "Identifying publicly exposed assets through Metagoofil and Python"}
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Cryptographic Security Posture",
+      "tests": [
+        {"id": "3.1", "title": "Testing Cryptography standards with sslyze and NMAP"},
+        {"id": "3.2", "title": "Verifying HTTP Compression is enabled, a BREACH precondition, with CURL"},
+        {"id": "3.3", "title": "Testing Padding Oracle on target cookies with python and padbuster"}
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Business Logic Validation",
+      "tests": [
+        {"id": "4.1", "title": "Testing Rate Limits on actionable endpoints"},
+        {"id": "4.2", "title": "Testing input validation on identified webforms, conventional input"},
+        {"id": "4.3", "title": "Testing input validation on identified webforms, unconventional input"},
+        {"id": "4.4", "title": "Testing trust boundaries by omitting cookie values"},
+        {"id": "4.5", "title": "Testing trust boundaries by swapping account resource identifiers (BOLA)"},
+        {"id": "4.6", "title": "Testing for insufficient workflow validation through client side controls"}
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Server File System Probing",
+      "tests": [
+        {"id": "5.1", "title": "Testing for Path Traversal Vulnerabilities through Burp Intruder and Eyewitness"},
+        {"id": "5.2", "title": "Testing for Local File Inclusion using Burp Intruder and Eyewitness"},
+        {"id": "5.3", "title": "Testing for Path Confusion flaws using Burp Intruder and Eyewitness"},
+        {"id": "5.4", "title": "Testing for Caching flaws using Burp Intruder and Eyewitness"}
+      ]
+    },
+    {
+      "id": 6,
+      "title": "File Upload Flaws Testing",
+      "tests": [
+        {"id": "6.1", "title": "Testing for File Upload Vulnerabilities through permissive HTTP Verbs"}
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Error Handling Testing",
+      "tests": [
+        {"id": "7.1", "title": "Testing for Improper Error Handling and Stack Trace Outputs with Burp Intruder"}
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Web Application Injection Testing",
+      "tests": [
+        {"id": "8.1",  "title": "Testing for injection by supplying unexpected host header values"},
+        {"id": "8.2",  "title": "Testing for HTTP Verb Tampering with Burp Repeater"},
+        {"id": "8.3",  "title": "Testing for HTTP Parameter Pollution with eyewitness and python"},
+        {"id": "8.4",  "title": "Testing for SQL injection with Burp Intruder"},
+        {"id": "8.5",  "title": "Testing for LDAP Injection with Burp Intruder"},
+        {"id": "8.6",  "title": "Testing for SSI Injection with Burp Intruder"},
+        {"id": "8.7",  "title": "Testing for Code Injection with Burp Intruder"},
+        {"id": "8.8",  "title": "Testing for Command Injection with Burp Intruder"},
+        {"id": "8.9",  "title": "Testing for Format String Injection with Burp Intruder"},
+        {"id": "8.10", "title": "Testing for Server-Side Request Forgery with Burp Intruder"},
+        {"id": "8.11", "title": "Testing for XML Injection with Burp Intruder"},
+        {"id": "8.12", "title": "Testing for Insecure Deserialization with ysoserial and Burp Intruder"}
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Cross Site Scripting Testing",
+      "tests": [
+        {"id": "9.1", "title": "Testing for Reflected Cross-Site Scripting in Browser"},
+        {"id": "9.2", "title": "Testing for Stored Cross-Site Scripting on Application"},
+        {"id": "9.3", "title": "Testing for DOM-Based Cross Site Scripting in Browser"}
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Client Side Injection Testing",
+      "tests": [
+        {"id": "10.1", "title": "Testing for Javascript Execution and Injection in Browser"},
+        {"id": "10.2", "title": "Testing for HTML Injection in Browser"},
+        {"id": "10.3", "title": "Testing for Prototype Pollution with Burp Suite Extension DomInvader"},
+        {"id": "10.4", "title": "Testing for SSI Injection in Browser"},
+        {"id": "10.5", "title": "Testing for Client Side Redirect in Browser"}
+      ]
+    }
+  ]
+}
