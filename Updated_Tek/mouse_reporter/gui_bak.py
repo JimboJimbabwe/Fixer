@@ -18,8 +18,8 @@ from pathlib import Path
 from datetime import datetime
 
 # ───────────────────────────── paths ─────────────────────────────────────────
-CHECKLIST = Path("checklist.json")
-DATA      = Path("data")
+CHECKLIST  = Path("checklist.json")
+DATA_ROOT  = Path("data")          # base; each project lives in DATA_ROOT/<slug>/
 
 # ───────────────────────────── palette ───────────────────────────────────────
 BG        = "#0f0e17"
@@ -72,8 +72,21 @@ F_STEP    = ("Segoe UI", 9, "bold")
 def slugify(s):
     return re.sub(r"[^a-z0-9]+", "_", s.lower()).strip("_")[:48]
 
-def test_folder(cat_id, cat_title, test_id, test_title):
-    return DATA / f"{cat_id}_{slugify(cat_title)}" / f"{test_id.replace('.','_')}_{slugify(test_title)}"
+def test_folder(cat_id, cat_title, test_id, test_title, project_root=None):
+    base = project_root or DATA_ROOT
+    return base / f"{cat_id}_{slugify(cat_title)}" / f"{test_id.replace('.','_')}_{slugify(test_title)}"
+
+
+def scaffold_project(checklist: dict, project_root: Path) -> int:
+    """Create every test folder + images/ subdirectory up front. Returns folder count."""
+    count = 0
+    for cat in checklist["categories"]:
+        for test in cat["tests"]:
+            folder = test_folder(cat["id"], cat["title"],
+                                 test["id"], test["title"], project_root)
+            (folder / "images").mkdir(parents=True, exist_ok=True)
+            count += 1
+    return count
 
 def load_report(folder):
     rp = folder / "Report.json"
@@ -102,6 +115,156 @@ def pill_btn(parent, text, bg, fg, active_bg, cmd, padx=10, pady=4, font=None):
                      activeforeground=fg, relief="flat", cursor="hand2",
                      padx=padx, pady=pady, bd=0, command=cmd,
                      highlightthickness=0)
+
+# ─────────────────────── project dialog ──────────────────────────────────────
+class ProjectDialog(tk.Toplevel):
+    """
+    Modal dialog shown at startup.
+    Lists existing projects (sub-folders of DATA_ROOT) and lets the user
+    pick one or type a new name.  Sets self.result to the chosen Path or None.
+    """
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.title("Open / New Project")
+        self.configure(bg=BG_PANEL)
+        self.resizable(False, False)
+        self.result = None
+        self._build()
+        # centre over parent
+        self.update_idletasks()
+        pw, ph = parent.winfo_screenwidth(), parent.winfo_screenheight()
+        w, h = self.winfo_width(), self.winfo_height()
+        self.geometry(f"{w}x{h}+{(pw-w)//2}+{(ph-h)//2}")
+        self.grab_set()
+        self.protocol("WM_DELETE_WINDOW", self._cancel)
+        self.wait_window()
+
+    def _build(self):
+        # accent top bar
+        tk.Frame(self, bg=ACCENT, height=3).pack(fill="x")
+
+        body = tk.Frame(self, bg=BG_PANEL)
+        body.pack(fill="both", expand=True, padx=28, pady=20)
+
+        tk.Label(body, text="🔐  Security Testing Appendix",
+                 font=("Segoe UI", 13, "bold"),
+                 bg=BG_PANEL, fg=FG).pack(anchor="w")
+        tk.Label(body, text="Select an existing project or create a new one.",
+                 font=("Segoe UI", 9),
+                 bg=BG_PANEL, fg=FG_SUB).pack(anchor="w", pady=(2, 16))
+
+        # ── existing projects ─────────────────────────────────────────────
+        existing = self._list_projects()
+        if existing:
+            tk.Label(body, text="EXISTING PROJECTS",
+                     font=("Segoe UI", 8, "bold"),
+                     bg=BG_PANEL, fg=FG_SUB).pack(anchor="w", pady=(0, 6))
+
+            lb_frame = tk.Frame(body, bg=BORDER, highlightthickness=0)
+            lb_frame.pack(fill="x", pady=(0, 16))
+
+            self._listbox = tk.Listbox(
+                lb_frame,
+                font=("Consolas", 10),
+                bg=BG_ROW, fg=FG, selectbackground=ACCENT,
+                selectforeground=FG, relief="flat", bd=0,
+                activestyle="none",
+                height=min(len(existing), 6),
+            )
+            for name in existing:
+                self._listbox.insert("end", f"  {name}")
+            self._listbox.pack(fill="x", padx=1, pady=1)
+            self._listbox.bind("<Double-Button-1>", lambda _: self._open_selected())
+            self._listbox.bind("<<ListboxSelect>>", self._on_lb_select)
+        else:
+            self._listbox = None
+
+        # ── new project name ──────────────────────────────────────────────
+        tk.Label(body, text="NEW PROJECT NAME",
+                 font=("Segoe UI", 8, "bold"),
+                 bg=BG_PANEL, fg=FG_SUB).pack(anchor="w", pady=(0, 6))
+
+        entry_wrap = tk.Frame(body, bg=BORDER_HI,
+                              highlightthickness=1,
+                              highlightbackground=BORDER_HI)
+        entry_wrap.pack(fill="x")
+
+        self._name_var = tk.StringVar()
+        self._entry = tk.Entry(entry_wrap, textvariable=self._name_var,
+                               font=("Consolas", 11),
+                               bg=BG_INPUT, fg=FG, insertbackground=FG,
+                               relief="flat", bd=0,
+                               highlightthickness=1,
+                               highlightcolor=ACCENT,
+                               highlightbackground=BORDER_HI)
+        self._entry.pack(fill="x", ipady=7, padx=10)
+        self._entry.focus_set()
+        self._entry.bind("<Return>", lambda _: self._create_new())
+        # typing in entry deselects listbox
+        self._name_var.trace_add("write", self._on_type)
+
+        # ── buttons ───────────────────────────────────────────────────────
+        btn_row = tk.Frame(body, bg=BG_PANEL)
+        btn_row.pack(fill="x", pady=(16, 0))
+
+        pill_btn(btn_row, "Cancel", BG_PANEL, FG_SUB, BG_HOVER,
+                 self._cancel, padx=12, pady=6).pack(side="left")
+
+        self._open_btn = pill_btn(btn_row, "Open Selected →",
+                                  BG_PANEL, FG_DIM, BG_HOVER,
+                                  self._open_selected, padx=12, pady=6)
+        self._open_btn.pack(side="right", padx=(8, 0))
+
+        pill_btn(btn_row, "Create Project →",
+                 ACCENT, FG, "#6a50e0",
+                 self._create_new, padx=12, pady=6,
+                 font=("Segoe UI", 9, "bold")).pack(side="right")
+
+    def _list_projects(self):
+        if not DATA_ROOT.exists():
+            return []
+        return sorted(p.name for p in DATA_ROOT.iterdir() if p.is_dir())
+
+    def _on_lb_select(self, _=None):
+        if self._listbox and self._listbox.curselection():
+            self._open_btn.configure(fg=FG)
+
+    def _on_type(self, *_):
+        # deselect listbox when user types a new name
+        if self._listbox:
+            self._listbox.selection_clear(0, "end")
+        self._open_btn.configure(fg=FG_DIM)
+
+    def _open_selected(self):
+        if not self._listbox:
+            return
+        sel = self._listbox.curselection()
+        if not sel:
+            messagebox.showwarning("No selection",
+                "Click a project in the list to open it.", parent=self)
+            return
+        name = self._listbox.get(sel[0]).strip()
+        self.result = DATA_ROOT / name
+        self.destroy()
+
+    def _create_new(self):
+        name = self._name_var.get().strip()
+        if not name:
+            messagebox.showwarning("Name required",
+                "Enter a project name to create.", parent=self)
+            return
+        slug = slugify(name)
+        if not slug:
+            messagebox.showwarning("Invalid name",
+                "Use letters, numbers or spaces.", parent=self)
+            return
+        self.result = DATA_ROOT / slug
+        self.destroy()
+
+    def _cancel(self):
+        self.result = None
+        self.destroy()
+
 
 # ───────────────────────── URL list widget ────────────────────────────────────
 class URLListWidget(tk.Frame):
@@ -256,13 +419,14 @@ class StepWidget(tk.Frame):
 
 # ─────────────────────────── detail panel ────────────────────────────────────
 class DetailPanel(tk.Frame):
-    def __init__(self, parent, ci, ti, cat, test, on_status_change):
+    def __init__(self, parent, ci, ti, cat, test, on_status_change, project_root=None):
         super().__init__(parent, bg=BG_EXP)
         self.ci, self.ti        = ci, ti
         self.cat, self.test     = cat, test
         self.on_status_change   = on_status_change
         self.folder             = test_folder(cat["id"], cat["title"],
-                                              test["id"], test["title"])
+                                              test["id"], test["title"],
+                                              project_root)
         self.report             = load_report(self.folder)
         self._build()
 
@@ -397,11 +561,27 @@ class App:
         self.checklist  = json.loads(CHECKLIST.read_text(encoding="utf-8"))
         self.expanded   = None
         self.detail_ref = None
-        self.row_refs   = {}   # (ci,ti) -> (wrapper, chevron, dot, title_lbl)
+        self.row_refs   = {}
         self.stats_var  = tk.StringVar()
+        self.project_var = tk.StringVar()
 
-        DATA.mkdir(exist_ok=True)
+        # ── project selection ─────────────────────────────────────────────
+        DATA_ROOT.mkdir(exist_ok=True)
+        dlg = ProjectDialog(root)
+        if dlg.result is None:
+            root.destroy()
+            return
+
+        self.project_root = dlg.result
+        self.project_var.set(self.project_root.name)
+
+        # scaffold all folders immediately
+        n = scaffold_project(self.checklist, self.project_root)
+
         self._build()
+
+        # brief status flash in header
+        self.stats_var.set(f"Project '{self.project_root.name}' — {n} folders ready")
 
     # ── layout ────────────────────────────────────────────────────────────────
 
@@ -437,9 +617,14 @@ class App:
         tk.Label(txt_col, text="Security Testing Appendix",
                  font=("Segoe UI", 14, "bold"),
                  bg=BG_PANEL, fg=FG, anchor="w").pack(anchor="w")
-        tk.Label(txt_col, text="Pentest Evidence Organizer",
+        proj_row = tk.Frame(txt_col, bg=BG_PANEL)
+        proj_row.pack(anchor="w")
+        tk.Label(proj_row, text="Project: ",
                  font=("Segoe UI", 9),
-                 bg=BG_PANEL, fg=FG_SUB, anchor="w").pack(anchor="w")
+                 bg=BG_PANEL, fg=FG_SUB).pack(side="left")
+        tk.Label(proj_row, textvariable=self.project_var,
+                 font=("Segoe UI", 9, "bold"),
+                 bg=BG_PANEL, fg=ACCENT).pack(side="left")
 
         # stats right side
         stats_wrap = tk.Frame(h2, bg=BG_PANEL)
@@ -498,7 +683,8 @@ class App:
         for test in cat["tests"]:
             total += 1
             s = load_report(test_folder(cat["id"], cat["title"],
-                                         test["id"], test["title"]))["status"]
+                                         test["id"], test["title"],
+                                         self.project_root))["status"]
             if s == "complete": complete += 1
             elif s == "na":     na += 1
 
@@ -521,7 +707,8 @@ class App:
                  font=("Segoe UI", 8), bg=BG_CAT, fg=FG_SUB).pack(side="right", padx=16)
 
     def _build_row(self, ci, ti, cat, test):
-        folder = test_folder(cat["id"], cat["title"], test["id"], test["title"])
+        folder = test_folder(cat["id"], cat["title"], test["id"], test["title"],
+                             self.project_root)
         status = load_report(folder)["status"]
 
         wrapper = tk.Frame(self.frame, bg=BG)
@@ -603,7 +790,8 @@ class App:
         chev.configure(text="⌄", fg=ACCENT)
 
         dp = DetailPanel(wrapper, ci, ti, cat, test,
-                         on_status_change=self._on_status_change)
+                         on_status_change=self._on_status_change,
+                         project_root=self.project_root)
         dp.pack(fill="x")
         self.detail_ref = dp
         self.root.after(60, self._scroll_to, dp)
@@ -644,7 +832,8 @@ class App:
             for test in cat["tests"]:
                 total += 1
                 s = load_report(test_folder(cat["id"], cat["title"],
-                                             test["id"], test["title"]))["status"]
+                                             test["id"], test["title"],
+                                             self.project_root))["status"]
                 if s == "complete": complete += 1
                 elif s == "na":     na += 1
         pending = total - complete - na
