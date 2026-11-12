@@ -205,7 +205,10 @@ class ChecklistOverlay:
         self.h = DIAMETER + MARGIN_TOP + GAP
         sw = self.root.winfo_screenwidth()
         self.x0 = max(0, (sw - self.w) // 2)
-        self.y0 = 0
+        # y=0 sits under/behind the macOS menu bar - an overrideredirect window placed
+        # there can end up not drawn at all rather than just clipped. A modest offset
+        # clears it on macOS and is harmless on Linux/Windows too.
+        self.y0 = 40
         self.root.geometry(f"{self.w}x{self.h}+{self.x0}+{self.y0}")
 
         self.canvas = tk.Canvas(self.root, width=self.w, height=self.h,
@@ -230,6 +233,9 @@ class ChecklistOverlay:
         self._refresh_status()
         self.root.protocol("WM_DELETE_WINDOW", self.shutdown)
         self.root.after(200, self._poll)
+        print(f"[overlay] platform={sys.platform} tk={self.root.tk.call('info', 'patchlevel')} "
+              f"screen={sw}x{self.root.winfo_screenheight()} "
+              f"hud_geometry={self.w}x{self.h}+{self.x0}+{self.y0}", flush=True)
 
     # ---- transparency ---------------------------------------------------
     def _setup_transparency(self):
