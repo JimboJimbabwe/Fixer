@@ -4,11 +4,21 @@ Standalone checklist screen-capture overlay.
 
 This is the mouse/reporting overlay's own interaction model (global
 middle-click category/item picker, Space-toggled capture rectangle,
-Shift+scroll resize, F9 = real screenshot + description, Esc = un-prime,
-Ctrl+Alt+Q = quit) wired to a plain checklist.json instead of a project's
+Shift+scroll resize, a capture hotkey = real screenshot + description,
+Esc = un-prime) wired to a plain checklist.json instead of a project's
 wstg_reporting.json, and with no dependency on the red-team-audit-tool app,
 its Node server, or find_wstg_folder - just this script, pynput, and
 (optionally) Pillow/scrot.
+
+Two hotkey schemes, picked with --mac:
+  default (Linux/Windows): F9 = capture, F10 = complete, F11 = N/A,
+      Ctrl+Alt+Q = quit.
+  --mac (macOS): Ctrl+Alt+S = capture, Ctrl+Alt+C = complete,
+      Ctrl+Alt+N = N/A, Ctrl+Alt+Q = quit. F9-F11 collide with Mission
+      Control's "Show All Windows"/"Show Desktop" defaults on macOS, and a
+      third action wouldn't fit under F12 alone, so --mac swaps all three
+      to Ctrl+Alt+<letter> combos instead, which exist on every keyboard
+      and aren't bound to anything in macOS by default.
 
 It writes into the exact same tree and Report.json shape as the attached
 "Security Testing Appendix Organizer" (app.py):
@@ -34,9 +44,9 @@ Picking test    -> scroll / hover moves the highlight
 Primed          -> Space toggles the capture rectangle (it follows the cursor)
                    Shift_L / Shift_R pick the resize axis (length / height)
                    scroll resizes the rectangle along that axis
-                   F9                                  -> real screenshot + describe/URL window
-                   F10                                 -> mark this test Complete
-                   F11                                 -> mark this test N/A
+                   capture hotkey                      -> real screenshot + describe/URL window
+                   complete hotkey                      -> mark this test Complete
+                   N/A hotkey                            -> mark this test N/A
                    middle-click                         -> re-opens the category picker (re-prime)
                    Esc                                  -> un-prime, hide the rectangle
 Describe window -> fill in URL (optional) + description, "Save step" (or
@@ -48,7 +58,7 @@ Anywhere        -> Ctrl+Alt+Q quits
 Usage
 -----
     pip install pynput          # Pillow optional, only needed if scrot is unavailable
-    python3 checklist_screencap_overlay.py [--checklist checklist.json] [--output-dir data]
+    python3 checklist_screencap_overlay.py [--checklist checklist.json] [--output-dir data] [--mac]
 """
 import argparse
 import json
@@ -152,10 +162,17 @@ def load_checklist(path: Path):
 
 # ─────────────────────────────────────── overlay ───────────────────────────────────────
 class ChecklistOverlay:
-    def __init__(self, output_dir: Path, categories, items_by_category):
+    def __init__(self, output_dir: Path, categories, items_by_category, mac=False):
         self.output_dir = output_dir
         self.categories = categories                  # [(cat_id, cat_title), ...]
         self.items_by_category = items_by_category     # {(cat_id, cat_title): [(test_id, test_title), ...]}
+        self.mac = mac
+        # Display labels for whichever hotkey scheme is active - used only in the status bar.
+        self.key_labels = (
+            {"capture": "Ctrl+Alt+S", "complete": "Ctrl+Alt+C", "na": "Ctrl+Alt+N"}
+            if mac else
+            {"capture": "F9", "complete": "F10", "na": "F11"}
+        )
 
         # picking state: None | "category" | "item"
         self.mode = None
@@ -284,9 +301,10 @@ class ChecklistOverlay:
             msg = f"[{self.locked_category[1]}] pick test - scroll/hover, middle-click to confirm"
         elif self.primed:
             tid, _title = self.locked_item
+            kl = self.key_labels
             msg = (f"PRIMED: {self.locked_category[1]} / {tid}\n"
                    f"Space=toggle rect | Shift_L+scroll=width | Shift_R+scroll=height | "
-                   f"F9=capture | F10=complete | F11=N/A | Esc=unprime")
+                   f"{kl['capture']}=capture | {kl['complete']}=complete | {kl['na']}=N/A | Esc=unprime")
         else:
             msg = "Idle - middle-click to pick a category"
         self.status_label.config(text=msg)
@@ -619,6 +637,11 @@ class ChecklistOverlay:
                                               on_move=on_move)
         self.mouse_listener.start()
 
+        def ctrl_alt_down():
+            ctrl = keyboard.Key.ctrl_l in self.pressed or keyboard.Key.ctrl in self.pressed or keyboard.Key.ctrl_r in self.pressed
+            alt = keyboard.Key.alt_l in self.pressed or keyboard.Key.alt in self.pressed or keyboard.Key.alt_r in self.pressed
+            return ctrl and alt
+
         def on_press(key):
             if key in self.pressed:
                 return                      # ignore auto-repeat
@@ -629,18 +652,22 @@ class ChecklistOverlay:
                 self.root.after(0, self.set_resize_axis, "length")
             elif key == keyboard.Key.shift_r:
                 self.root.after(0, self.set_resize_axis, "height")
-            elif key == keyboard.Key.f9:
-                self.root.after(0, self.capture)
-            elif key == keyboard.Key.f10:
-                self.root.after(0, self.mark_status, "complete")
-            elif key == keyboard.Key.f11:
-                self.root.after(0, self.mark_status, "na")
             elif key == keyboard.Key.esc:
                 self.root.after(0, self.unprime)
-            elif (key == keyboard.KeyCode.from_char("q") and
-                  (keyboard.Key.ctrl_l in self.pressed or keyboard.Key.ctrl in self.pressed) and
-                  (keyboard.Key.alt_l in self.pressed or keyboard.Key.alt in self.pressed)):
-                self.request_quit()         # Ctrl+Alt+Q
+            elif not self.mac and key == keyboard.Key.f9:
+                self.root.after(0, self.capture)
+            elif not self.mac and key == keyboard.Key.f10:
+                self.root.after(0, self.mark_status, "complete")
+            elif not self.mac and key == keyboard.Key.f11:
+                self.root.after(0, self.mark_status, "na")
+            elif self.mac and ctrl_alt_down() and key == keyboard.KeyCode.from_char("s"):
+                self.root.after(0, self.capture)
+            elif self.mac and ctrl_alt_down() and key == keyboard.KeyCode.from_char("c"):
+                self.root.after(0, self.mark_status, "complete")
+            elif self.mac and ctrl_alt_down() and key == keyboard.KeyCode.from_char("n"):
+                self.root.after(0, self.mark_status, "na")
+            elif ctrl_alt_down() and key == keyboard.KeyCode.from_char("q"):
+                self.request_quit()         # Ctrl+Alt+Q, both schemes
 
         def on_release(key):
             self.pressed.discard(key)
@@ -668,6 +695,9 @@ def main():
                      help="Path to the checklist JSON (default: ./checklist.json)")
     ap.add_argument("--output-dir", default="data",
                      help="Folder to write Report.json/images into, same layout app.py uses (default: ./data)")
+    ap.add_argument("--mac", action="store_true",
+                     help="Use mac-safe hotkeys (Ctrl+Alt+S/C/N) instead of F9/F10/F11, which collide "
+                          "with Mission Control's defaults on macOS.")
     args = ap.parse_args()
 
     checklist_path = Path(args.checklist)
@@ -677,7 +707,7 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     order, items_by_cat = load_checklist(checklist_path)
-    overlay = ChecklistOverlay(output_dir, order, items_by_cat)
+    overlay = ChecklistOverlay(output_dir, order, items_by_cat, mac=args.mac)
     overlay.run()
 
 
