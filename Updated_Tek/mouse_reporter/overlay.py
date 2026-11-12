@@ -62,6 +62,7 @@ Usage
 """
 import argparse
 import json
+import os
 import re
 import shutil
 import signal
@@ -681,11 +682,36 @@ class ChecklistOverlay:
         self.kb_listener = keyboard.Listener(on_press=on_press, on_release=on_release)
         self.kb_listener.start()
 
+    def _activate_mac(self):
+        """A plain CLI python3 process launched from Terminal never becomes the
+        foreground/active macOS app on its own, so Tk's windows can exist in the
+        window server's list without ever being drawn on top of anything - no
+        error, no crash, just invisible. Explicitly telling System Events to make
+        this process frontmost is the standard workaround. This needs Automation
+        permission (Privacy & Security -> Automation -> Terminal -> System Events)
+        - macOS will prompt for it the first time; allow it."""
+        if sys.platform != "darwin":
+            return
+        try:
+            subprocess.run(
+                ["osascript", "-e",
+                 f'tell application "System Events" to set frontmost of '
+                 f'(first process whose unix id is {os.getpid()}) to true'],
+                check=False, capture_output=True, timeout=5,
+            )
+        except Exception as e:
+            print(f"[overlay] could not activate via osascript: {e}", flush=True)
+        self.root.lift()
+        self.root.attributes("-topmost", True)
+        self.status_win.lift()
+
     def run(self):
         signal.signal(signal.SIGINT, self.request_quit)
         if hasattr(signal, "SIGTERM"):
             signal.signal(signal.SIGTERM, self.request_quit)
         self.start_listeners()
+        self.root.after(200, self._activate_mac)
+        self.root.after(1000, self._activate_mac)  # a second nudge in case the first raced window creation
         try:
             self.root.mainloop()
         except KeyboardInterrupt:
