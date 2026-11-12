@@ -196,9 +196,17 @@ class ChecklistOverlay:
         self.capture_in_progress = False
         self.step_counts = {}          # (cat_id, test_id) -> last step number
 
+        # Borderless (overrideredirect) + transparent-color-keyed windows are a known
+        # unreliable combination on macOS/Cocoa - they can exist with no error and still
+        # never actually draw. Rather than patch that combination, macOS gets ordinary
+        # bordered, opaque, always-on-top windows instead: a ordinary window is
+        # guaranteed to render and get normal Dock/activation handling like any other
+        # Mac app, at the cost of a visible title bar.
+        self.is_mac = sys.platform == "darwin"
         self.root = tk.Tk()
         self.root.title("checklist-screencap-overlay")
-        self.root.overrideredirect(True)
+        if not self.is_mac:
+            self.root.overrideredirect(True)
         self.root.attributes("-topmost", True)
         self._setup_transparency()
 
@@ -217,12 +225,15 @@ class ChecklistOverlay:
         self.canvas.pack()
 
         self.status_win = tk.Toplevel(self.root)
-        self.status_win.overrideredirect(True)
+        self.status_win.title("checklist-screencap-overlay-status")
+        if not self.is_mac:
+            self.status_win.overrideredirect(True)
         self.status_win.attributes("-topmost", True)
-        try:
-            self.status_win.attributes("-alpha", ALPHA)
-        except tk.TclError:
-            pass
+        if not self.is_mac:
+            try:
+                self.status_win.attributes("-alpha", ALPHA)
+            except tk.TclError:
+                pass
         self.status_label = tk.Label(self.status_win, text="", fg="#f3f4f6",
                                       bg="#111318", font=("Helvetica", 10),
                                       padx=10, pady=4, justify="left", anchor="nw",
@@ -241,15 +252,17 @@ class ChecklistOverlay:
     # ---- transparency ---------------------------------------------------
     def _setup_transparency(self):
         self._bg = "black"
+        if self.is_mac:
+            # Deliberately NOT using "-transparent"/"systemTransparent" here - that
+            # Cocoa-only color-keying path is exactly the combination that was leaving
+            # the window undrawn. A plain opaque dark window is the trade-off: it looks
+            # like a small normal app window instead of a borderless floating HUD, but
+            # it is guaranteed to actually show up.
+            return
         try:
             if sys.platform.startswith("win"):
                 self._bg = KEY_COLOR
                 self.root.attributes("-transparentcolor", KEY_COLOR)
-                self.root.attributes("-alpha", ALPHA)
-            elif sys.platform == "darwin":
-                self.root.attributes("-transparent", True)
-                self.root.config(bg="systemTransparent")
-                self._bg = "systemTransparent"
                 self.root.attributes("-alpha", ALPHA)
             else:
                 self.root.attributes("-alpha", ALPHA)
@@ -391,12 +404,15 @@ class ChecklistOverlay:
             return
         self.rect_on = True
         w = tk.Toplevel(self.root)
-        w.overrideredirect(True)
+        w.title("checklist-screencap-overlay-rect")
+        if not self.is_mac:
+            w.overrideredirect(True)
         w.attributes("-topmost", True)
-        try:
-            w.attributes("-alpha", RECT_ALPHA)
-        except tk.TclError:
-            pass
+        if not self.is_mac:
+            try:
+                w.attributes("-alpha", RECT_ALPHA)
+            except tk.TclError:
+                pass
         self.rect_canvas = tk.Canvas(w, bg=COL_RECT, highlightthickness=3,
                                       highlightbackground="#ffffff")
         self.rect_canvas.pack(fill="both", expand=True)
