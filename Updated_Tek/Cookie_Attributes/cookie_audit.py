@@ -128,9 +128,24 @@ def audit(filepath: str, verbose: bool = False) -> list[CookieFinding]:
         print(f"[ERROR] File not found: {filepath}", file=sys.stderr)
         sys.exit(1)
 
-    # Remove DOCTYPE block so ET can parse without an external resolver
+    # Remove DOCTYPE block so ET can parse without an external resolver.
+    # Burp's internal subset contains its own > characters so a [^>]* regex
+    # stops too early.  Scan manually for ]> instead.
     import re
-    raw_xml = re.sub(r"<!DOCTYPE[^>]*(?:\[.*?\])?>", "", raw_xml, flags=re.DOTALL)
+    def _strip_doctype(s):
+        start = s.find("<!DOCTYPE")
+        if start == -1:
+            return s
+        bracket = s.find("[", start)
+        gt      = s.find(">", start)
+        if bracket != -1 and bracket < gt:
+            end = s.find("]>", bracket)
+            if end != -1:
+                return s[:start] + s[end + 2:]
+        if gt != -1:
+            return s[:start] + s[gt + 1:]
+        return s
+    raw_xml = _strip_doctype(raw_xml)
 
     try:
         root = ET.fromstring(raw_xml)
