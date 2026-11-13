@@ -1,0 +1,143 @@
+{
+  "_comment": "CONF-12 CSP Scanner Strings — each entry has a value (what to search for / check), a severity, and a reasoning field for customer-facing reporting",
+  "_version": "1.0",
+
+  "high_risk_directives": [
+    {
+      "value": "unsafe-inline",
+      "severity": "HIGH",
+      "reasoning": "'unsafe-inline' allows inline <script> and <style> blocks as well as event handlers (onclick, onerror, etc.). This completely negates CSP's primary defence against XSS, since an attacker-controlled inline script will execute without restriction. Any page with this directive is functionally unprotected by CSP."
+    },
+    {
+      "value": "unsafe-eval",
+      "severity": "HIGH",
+      "reasoning": "'unsafe-eval' permits the use of eval(), new Function(), setTimeout(string) and similar dynamic code execution APIs. These functions can turn attacker-controlled data into executable code, enabling XSS even without inline scripts. Modern frameworks do not require eval(); its presence indicates a legacy or poorly-configured policy."
+    },
+    {
+      "value": "unsafe-hashes",
+      "severity": "MEDIUM",
+      "reasoning": "'unsafe-hashes' allows hash-matching of inline event handlers (onclick='...') and inline styles. While narrower than 'unsafe-inline', it still enables inline event handler execution and may be exploitable depending on the hashes present. Prefer nonce-based policies or full externalisation of event handlers."
+    },
+    {
+      "value": "unsafe-allow-redirects",
+      "severity": "MEDIUM",
+      "reasoning": "'unsafe-allow-redirects' (a navigate-to directive modifier) bypasses CSP checks for redirect destinations. This can allow navigation to attacker-controlled URLs that would otherwise be blocked by a navigate-to policy."
+    },
+    {
+      "value": "data:",
+      "severity": "HIGH",
+      "reasoning": "Allowing the 'data:' URI scheme in script-src or object-src lets an attacker inject scripts via data URIs (e.g. data:text/javascript,alert(1)). This is a well-known CSP bypass; modern browsers still block it in script-src by default but older policies may not. Also a vector for object/embed injection."
+    },
+    {
+      "value": "blob:",
+      "severity": "MEDIUM",
+      "reasoning": "Allowing 'blob:' URIs in script-src enables script loading from Blob objects constructed at runtime. Combined with XSS-created Blob URLs this can bypass CSP restrictions on external script sources."
+    },
+    {
+      "value": "filesystem:",
+      "severity": "MEDIUM",
+      "reasoning": "Allowing the 'filesystem:' URI scheme is rarely necessary and may allow script or resource loading from the browser's sandboxed filesystem origin, which can be populated via prior XSS. Remove unless specifically required."
+    }
+  ],
+
+  "wildcard_patterns": [
+    {
+      "value": "*",
+      "severity": "HIGH",
+      "reasoning": "A bare wildcard (*) in a directive (e.g. script-src *) allows loading from any origin. This makes the directive meaningless as a security control. Even if https: is required, any HTTPS host becomes an allowed script source, enabling attacks via compromised CDNs or third-party hosts."
+    },
+    {
+      "value": "https:",
+      "directive_context": "script-src",
+      "severity": "HIGH",
+      "reasoning": "'https:' as a script-src source allows scripts from any HTTPS host, effectively a wildcard restricted only to encrypted connections. An attacker who can upload content to any HTTPS host reachable by the browser can serve a malicious script."
+    },
+    {
+      "value": "http:",
+      "directive_context": "script-src",
+      "severity": "HIGH",
+      "reasoning": "'http:' as a script-src source allows any plaintext HTTP host, which is both a wildcard and allows MITM downgrade to inject scripts. This should never appear in a script-src directive."
+    }
+  ],
+
+  "missing_directives": [
+    {
+      "directive": "default-src",
+      "severity": "HIGH",
+      "reasoning": "'default-src' is the catch-all fallback for all resource types not covered by a more specific directive. Without it, browsers apply no restriction to uncovered types (scripts, styles, images, fonts, frames, etc.). Every CSP policy should define default-src as a safe baseline."
+    },
+    {
+      "directive": "object-src",
+      "severity": "HIGH",
+      "reasoning": "Without 'object-src none', browsers may load Flash, Java applets, or other plugins via <object>, <embed>, and <applet> tags. These plugin contexts can execute arbitrary code outside the CSP script-src restriction. OWASP and Google both require 'object-src none' for a policy to be considered effective."
+    },
+    {
+      "directive": "base-uri",
+      "severity": "HIGH",
+      "reasoning": "Without a 'base-uri' directive, an attacker who can inject a <base href='https://evil.com'> tag will redirect all relative URLs in the page to their server, hijacking resource loads and form submissions. 'base-uri self' or 'base-uri none' prevents this. This is a commonly overlooked CSP gap."
+    },
+    {
+      "directive": "script-src",
+      "severity": "HIGH",
+      "reasoning": "Without an explicit 'script-src', the policy falls back to 'default-src'. If 'default-src' is also absent or permissive, there is no restriction on JavaScript sources. Explicit 'script-src' is recommended to make the script allowlist intentional and auditable."
+    },
+    {
+      "directive": "form-action",
+      "severity": "MEDIUM",
+      "reasoning": "'form-action' restricts where forms on the page may submit data. Without it, a form injection or XSS can redirect form submissions to an attacker-controlled endpoint even if 'default-src' is restrictive. Note: 'default-src' does NOT cover form-action — it must be set explicitly."
+    },
+    {
+      "directive": "frame-ancestors",
+      "severity": "MEDIUM",
+      "reasoning": "'frame-ancestors' replaces the X-Frame-Options header and controls which origins may embed the page in a frame. Without it, clickjacking is possible. 'frame-ancestors none' or 'frame-ancestors self' should be set on sensitive pages."
+    }
+  ],
+
+  "report_only_indicator": {
+    "header": "Content-Security-Policy-Report-Only",
+    "severity": "MEDIUM",
+    "reasoning": "'Content-Security-Policy-Report-Only' means CSP is in monitoring mode only — the browser logs violations but does NOT enforce them. The page receives no protection from XSS or injection. This header is appropriate during CSP rollout but must be replaced by 'Content-Security-Policy' before going to production. Its presence in production indicates an incomplete or stalled security hardening effort."
+  },
+
+  "nonce_and_hash_notes": [
+    {
+      "value": "nonce-",
+      "severity": "INFO",
+      "reasoning": "A nonce-based CSP (nonce-<random>) is the preferred modern approach — it allows specific inline scripts with a per-request random token while blocking all others. Verify the nonce is truly random (cryptographically) and is not reused across requests. A static nonce negates its security value."
+    },
+    {
+      "value": "sha256-",
+      "severity": "INFO",
+      "reasoning": "Hash-based CSP allows inline scripts whose SHA-256 hash matches a value in the policy. This is secure for static inline scripts. Verify the hashes are correct and that no unsafe fallbacks (unsafe-inline) are also present, which would override the hash restriction."
+    },
+    {
+      "value": "sha384-",
+      "severity": "INFO",
+      "reasoning": "SHA-384 hash-based CSP — same security model as sha256; stronger hash function. Verify no co-existing unsafe-inline directive."
+    },
+    {
+      "value": "sha512-",
+      "severity": "INFO",
+      "reasoning": "SHA-512 hash-based CSP — same security model as sha256; strongest common hash. Verify no co-existing unsafe-inline directive."
+    }
+  ],
+
+  "auth_path_keywords": [
+    "login", "logout", "signin", "sign-in", "signout", "sign-out",
+    "auth", "authenticate", "authentication", "authorize", "authorization",
+    "oauth", "oauth2", "oidc", "sso", "saml",
+    "token", "refresh", "revoke",
+    "password", "reset-password", "forgot-password", "change-password",
+    "register", "signup", "sign-up", "enrollment", "enroll",
+    "account", "profile", "session", "sessions",
+    "mfa", "2fa", "totp", "otp", "verify",
+    "admin", "dashboard", "portal", "manage"
+  ],
+
+  "input_bearing_keywords": [
+    "search", "query", "q=", "input", "form", "submit", "post",
+    "comment", "message", "feedback", "contact", "upload", "file",
+    "checkout", "payment", "order", "cart", "review",
+    "username", "email", "user", "name", "address"
+  ]
+}
